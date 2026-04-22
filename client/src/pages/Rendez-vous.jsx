@@ -74,7 +74,7 @@ export default function RendezVous() {
 
       const date = formatApiDate(day);
 
-      const res = await fetch(`http://localhost:4000/api/availability?date=${date}`);
+      const res = await fetch(`https://rodriguez-backend.fly.dev/api/availability?date=${date}`);
       const data = await res.json();
 
       if (!res.ok) {
@@ -111,7 +111,7 @@ export default function RendezVous() {
 
       const date = formatApiDate(selectedDay);
 
-      const res = await fetch("http://localhost:4000/api/book-appointment", {
+      const res = await fetch("https://rodriguez-backend.fly.dev/api/book-appointment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
