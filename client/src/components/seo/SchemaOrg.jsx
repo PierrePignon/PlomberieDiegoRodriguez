@@ -6,10 +6,10 @@ export default function SchemaOrg() {
     const schema = {
       "@context": "https://schema.org",
       "@type": "Plumber",
-      "@id": "https://www.plomberie-rodriguez.fr/#business",
+      "@id": "https://plomberie-diego-rodriguez.fr/#business",
       "name": BUSINESS.name,
-      "image": "https://www.plomberie-rodriguez.fr/og-image.jpg",
-      "url": "https://www.plomberie-rodriguez.fr",
+      "image": "https://plomberie-diego-rodriguez.fr/og-image.jpg",
+      "url": "https://plomberie-diego-rodriguez.fr",
       "telephone": BUSINESS.phone,
       "email": BUSINESS.email,
       "address": {

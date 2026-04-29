@@ -1,0 +1,11 @@
+# https://plomberie-diego-rodriguez.fr/
+# robots.txt — Plomberie Rodriguez Diego
+
+User-agent: *
+Allow: /
+
+# Bloque les chemins techniques inutiles (rien de critique pour ce site)
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://plomberie-diego-rodriguez.fr/sitemap.xml
