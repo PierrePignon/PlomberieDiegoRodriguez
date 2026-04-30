@@ -18,36 +18,52 @@ const SLOTS = [
   "18:00",
 ];
 
-const CALENDAR_ID = process.env.GOOGLE_CALENDAR_ID;
-const GOOGLE_CLIENT_EMAIL = process.env.GOOGLE_CLIENT_EMAIL;
-const GOOGLE_PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY;
 const TIMEZONE = "Europe/Paris";
 
-// Vérifications explicites
-if (!CALENDAR_ID) {
-  throw new Error("GOOGLE_CALENDAR_ID manquant dans le fichier .env");
+// Lazy init : on ne throw plus au load du module.
+// Si une secret manque, le serveur démarre quand même (pour /healthz)
+// et les routes /api/* retournent 500 propre.
+let _calendarClient = null;
+let _calendarClientError = null;
+
+function getCalendarClient() {
+  if (_calendarClient) return _calendarClient;
+  if (_calendarClientError) throw _calendarClientError;
+
+  const CALENDAR_ID = process.env.GOOGLE_CALENDAR_ID;
+  const GOOGLE_CLIENT_EMAIL = process.env.GOOGLE_CLIENT_EMAIL;
+  const GOOGLE_PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY;
+
+  const missing = [];
+  if (!CALENDAR_ID) missing.push("GOOGLE_CALENDAR_ID");
+  if (!GOOGLE_CLIENT_EMAIL) missing.push("GOOGLE_CLIENT_EMAIL");
+  if (!GOOGLE_PRIVATE_KEY) missing.push("GOOGLE_PRIVATE_KEY");
+
+  if (missing.length > 0) {
+    const err = new Error(
+      `Variables d'environnement manquantes : ${missing.join(", ")}. ` +
+      `Configurez-les via 'fly secrets set' puis redéployez.`
+    );
+    err.code = "MISSING_SECRETS";
+    _calendarClientError = err;
+    throw err;
+  }
+
+  const auth = new google.auth.GoogleAuth({
+    credentials: {
+      client_email: GOOGLE_CLIENT_EMAIL,
+      private_key: GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
+    },
+    scopes: ["https://www.googleapis.com/auth/calendar"],
+  });
+
+  _calendarClient = {
+    calendar: google.calendar({ version: "v3", auth }),
+    calendarId: CALENDAR_ID,
+  };
+
+  return _calendarClient;
 }
-
-if (!GOOGLE_CLIENT_EMAIL) {
-  throw new Error("GOOGLE_CLIENT_EMAIL manquant dans le fichier .env");
-}
-
-if (!GOOGLE_PRIVATE_KEY) {
-  throw new Error("GOOGLE_PRIVATE_KEY manquant dans le fichier .env");
-}
-
-const auth = new google.auth.GoogleAuth({
-  credentials: {
-    client_email: GOOGLE_CLIENT_EMAIL,
-    private_key: GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
-  },
-  scopes: ["https://www.googleapis.com/auth/calendar"],
-});
-
-const calendar = google.calendar({
-  version: "v3",
-  auth,
-});
 
 function buildSlotDate(date, slot) {
   const [hour, minute] = slot.split(":").map(Number);
@@ -63,6 +79,8 @@ function overlaps(startA, endA, startB, endB) {
 }
 
 async function getBusyRanges(date) {
+  const { calendar, calendarId } = getCalendarClient();
+
   const timeMin = new Date(`${date}T00:00:00+02:00`);
   const timeMax = new Date(`${date}T23:59:59+02:00`);
 
@@ -71,11 +89,11 @@ async function getBusyRanges(date) {
       timeMin: timeMin.toISOString(),
       timeMax: timeMax.toISOString(),
       timeZone: TIMEZONE,
-      items: [{ id: CALENDAR_ID }],
+      items: [{ id: calendarId }],
     },
   });
 
-  return response.data.calendars[CALENDAR_ID]?.busy || [];
+  return response.data.calendars[calendarId]?.busy || [];
 }
 
 async function getAvailableSlots(date, durationMinutes = 60) {
@@ -109,12 +127,21 @@ router.get("/availability", async (req, res) => {
 
     const slots = await getAvailableSlots(date, 60);
 
+    console.log(`[availability] date=${date} slots=${slots.length}/${SLOTS.length}`);
+
     return res.json({
       date,
       slots,
     });
   } catch (error) {
     console.error("Erreur /availability :", error);
+
+    if (error.code === "MISSING_SECRETS") {
+      return res.status(503).json({
+        error: "Service de réservation temporairement indisponible. Contactez Diego par téléphone : 06 37 75 92 06.",
+      });
+    }
+
     return res.status(500).json({
       error: "Impossible de charger les disponibilités.",
     });
@@ -142,8 +169,10 @@ router.post("/book-appointment", async (req, res) => {
     const start = buildSlotDate(date, slot);
     const end = new Date(start.getTime() + durationMinutes * 60 * 1000);
 
+    const { calendar, calendarId } = getCalendarClient();
+
     const event = await calendar.events.insert({
-      calendarId: CALENDAR_ID,
+      calendarId,
       requestBody: {
         summary: `RDV Plomberie — ${customer.name}`,
         description: [
@@ -165,6 +194,11 @@ router.post("/book-appointment", async (req, res) => {
       },
     });
 
+    console.log(
+      `[book-appointment] ✅ RDV créé — ${customer.name} (${customer.phone}) ` +
+      `le ${date} à ${slot} | eventId=${event.data.id}`
+    );
+
     return res.json({
       success: true,
       eventId: event.data.id,
@@ -173,6 +207,13 @@ router.post("/book-appointment", async (req, res) => {
     });
   } catch (error) {
     console.error("Erreur /book-appointment :", error);
+
+    if (error.code === "MISSING_SECRETS") {
+      return res.status(503).json({
+        error: "Service de réservation temporairement indisponible. Contactez Diego par téléphone : 06 37 75 92 06.",
+      });
+    }
+
     return res.status(500).json({
       error: "Impossible de créer le rendez-vous.",
     });
