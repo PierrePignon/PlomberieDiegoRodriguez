@@ -6,17 +6,13 @@ import { google } from "googleapis";
 
 const router = express.Router();
 
-const SLOTS = [
-  "08:00",
-  "09:00",
-  "10:00",
-  "11:00",
-  "14:00",
-  "15:00",
-  "16:00",
-  "17:00",
-  "18:00",
-];
+// Un seul créneau par jour : 11h30 → 12h30 (60 min)
+// Diego ne prend des RDV que sur ce créneau, le reste du temps il est sur chantier.
+const SLOTS = ["11:30"];
+
+// Jours ouvrés pour la prise de RDV : lundi → jeudi uniquement
+// (le frontend filtre déjà côté UI, mais on protège aussi côté backend)
+const ALLOWED_DAYS_OF_WEEK = [1, 2, 3, 4]; // 0=dimanche, 6=samedi
 
 const TIMEZONE = "Europe/Paris";
 
@@ -97,6 +93,13 @@ async function getBusyRanges(date) {
 }
 
 async function getAvailableSlots(date, durationMinutes = 60) {
+  // Sécurité : refuser les jours hors lun-jeu, même si la requête arrive
+  const dayObj = new Date(`${date}T00:00:00`);
+  const dow = dayObj.getDay();
+  if (!ALLOWED_DAYS_OF_WEEK.includes(dow)) {
+    return [];
+  }
+
   const busyRanges = await getBusyRanges(date);
 
   const availableSlots = SLOTS.filter((slot) => {

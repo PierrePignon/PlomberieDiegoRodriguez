@@ -2,16 +2,22 @@
 import { Calendar, Clock, CheckCircle, Phone, ChevronRight, ChevronLeft } from "lucide-react";
 import { BUSINESS } from "../lib/business";
 
-const DAYS_AHEAD = 14;
+// Diego ne prend des RDV que du LUNDI au JEUDI, sur un seul créneau (11h30-12h30).
+// Le reste du temps il est sur chantier.
+const DAYS_AHEAD = 8; // 8 jours ouvrés affichés (≈ 2 semaines)
+const ALLOWED_DAYS_OF_WEEK = [1, 2, 3, 4]; // lun=1 ... jeu=4
 
 function getWorkingDays() {
   const days = [];
   let d = new Date();
   d.setDate(d.getDate() + 1);
 
-  while (days.length < DAYS_AHEAD) {
+  // Garde-fou contre boucle infinie
+  let safety = 60;
+
+  while (days.length < DAYS_AHEAD && safety-- > 0) {
     const dow = d.getDay();
-    if (dow !== 0 && dow !== 6) {
+    if (ALLOWED_DAYS_OF_WEEK.includes(dow)) {
       days.push(new Date(d));
     }
     d.setDate(d.getDate() + 1);
@@ -186,6 +192,10 @@ export default function RendezVous() {
             <p className="text-slate-600">
               Réservez un créneau disponible avec {BUSINESS.owner}.
             </p>
+            <div className="mt-3 inline-flex items-center gap-2 bg-orange-50 border border-orange-200 text-orange-900 text-sm font-medium px-3 py-2 rounded-lg">
+              <Clock className="w-4 h-4 text-orange-600 shrink-0" />
+              <span>RDV uniquement du <strong>lundi au jeudi</strong>, créneau <strong>11h30 — 12h30</strong></span>
+            </div>
 
             <div className="mt-6">
               <div className="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
