@@ -22,7 +22,7 @@ export default function Avis() {
           <h1 className="text-4xl sm:text-5xl font-black text-white mb-5">Avis clients</h1>
           <div className="flex items-center justify-center gap-3 mb-4">
             <StarRating />
-            <span className="text-white font-bold text-xl">5/5</span>
+            <span className="text-white font-bold text-xl">4.9/5</span>
           </div>
           <p className="text-slate-300">+50 avis vérifiés sur Google · Port-de-Bouc et région</p>
         </div>

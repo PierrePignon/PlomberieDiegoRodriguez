@@ -96,7 +96,7 @@ export default function Home() {
             {/* Rating */}
             <div className="flex items-center gap-3 mt-8">
               <StarRating />
-              <span className="text-white font-bold">5/5</span>
+              <span className="text-white font-bold">4.9/5</span>
               <span className="text-slate-400 text-sm">· +50 avis vérifiés Google</span>
             </div>
           </div>
@@ -189,25 +189,46 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <div className="text-kinetic font-bold text-sm uppercase tracking-widest mb-3">Nos travaux</div>
-            <h2 className="text-3xl sm:text-4xl font-black text-abyss mb-4">D'autres réalisations</h2>
+            <h2 className="text-3xl sm:text-4xl font-black text-abyss mb-4">Réalisations récentes</h2>
             <p className="text-slate-500 max-w-xl mx-auto">Découvrez quelques exemples de chantiers réalisés par Diego Rodriguez dans la zone de Port-de-Bouc.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-            {BUSINESS.realizations.slice(0, 3).map((r) => (
-              <div key={r.title} className="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-xl transition-all">
-                <div className="relative h-52 overflow-hidden">
-                  <img src={r.image} alt={r.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-                  <div className="absolute top-3 left-3 bg-abyss text-white text-xs font-bold px-2 py-1 rounded">{r.type}</div>
-                  <div className="absolute top-3 right-3 bg-kinetic text-white text-xs font-bold px-2 py-1 rounded flex items-center gap-1">
-                    <MapPin className="w-3 h-3" />{r.city}
-                  </div>
-                </div>
-                <div className="p-5">
-                  <h3 className="font-bold text-abyss mb-2">{r.title}</h3>
-                  <p className="text-sm text-slate-500">{r.result}</p>
-                </div>
-              </div>
-            ))}
+            {BUSINESS.realizations
+              .filter((r) => r.imageAfter || r.image)
+              .slice(0, 3)
+              .map((r) => {
+                const cover = r.imageAfter || r.image;
+                const hasBeforeAfter = r.imageBefore && r.imageAfter;
+                return (
+                  <Link
+                    key={r.title}
+                    to="/realisations"
+                    className="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-xl transition-all block"
+                  >
+                    <div className="relative h-52 overflow-hidden">
+                      <img
+                        src={cover}
+                        alt={r.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                      <div className="absolute top-3 left-3 bg-abyss text-white text-xs font-bold px-2 py-1 rounded">{r.type}</div>
+                      <div className="absolute top-3 right-3 bg-kinetic text-white text-xs font-bold px-2 py-1 rounded flex items-center gap-1">
+                        <MapPin className="w-3 h-3" />{r.city}
+                      </div>
+                      {hasBeforeAfter && (
+                        <div className="absolute bottom-3 left-3 bg-white/95 backdrop-blur-sm text-abyss text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded shadow-md">
+                          Avant / Après ↗
+                        </div>
+                      )}
+                    </div>
+                    <div className="p-5">
+                      <h3 className="font-bold text-abyss mb-2 group-hover:text-kinetic transition-colors">{r.title}</h3>
+                      <p className="text-sm text-slate-500 line-clamp-2">{r.result}</p>
+                    </div>
+                  </Link>
+                );
+              })}
           </div>
           <div className="text-center">
             <Link to="/realisations" className="inline-flex items-center gap-2 bg-abyss text-white px-8 py-3.5 rounded-xl font-bold hover:bg-slate-800 transition-colors">
@@ -225,7 +246,7 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl font-black text-abyss mb-4">Avis clients vérifiés</h2>
             <div className="flex items-center justify-center gap-3">
               <StarRating />
-              <span className="font-bold text-abyss text-xl">5/5</span>
+              <span className="font-bold text-abyss text-xl">4.9/5</span>
               <span className="text-slate-500">· +50 avis sur Google</span>
             </div>
           </div>

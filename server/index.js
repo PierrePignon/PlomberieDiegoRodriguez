@@ -35,8 +35,57 @@ app.get("/healthz", (req, res) => {
       calendar: calendarOk ? "ok" : "missing-secrets",
       smtp: smtpOk ? "ok" : "missing-secrets",
     },
+    config: {
+      // Permet de vérifier d'un coup d'œil où partent les notifications
+      notif_target: process.env.NOTIF_EMAIL || process.env.SMTP_USER || "(non défini)",
+      smtp_sender: process.env.SMTP_USER || "(non défini)",
+    },
     timestamp: new Date().toISOString()
   });
+});
+
+// Endpoint de test d'envoi d'email — pratique pour debug sans remplir le formulaire
+app.get("/api/test-email", async (req, res) => {
+  try {
+    const nodemailer = (await import("nodemailer")).default;
+    const SMTP_USER = process.env.SMTP_USER;
+    const SMTP_PASS = process.env.SMTP_PASS;
+    const NOTIF_EMAIL = process.env.NOTIF_EMAIL || SMTP_USER;
+
+    if (!SMTP_USER || !SMTP_PASS) {
+      return res.status(503).json({ error: "SMTP non configuré." });
+    }
+
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: { user: SMTP_USER, pass: SMTP_PASS },
+    });
+
+    const ts = new Date().toLocaleString("fr-FR", { timeZone: "Europe/Paris" });
+    const info = await transporter.sendMail({
+      from: `"Devis — Site Plomberie Rodriguez (TEST)" <${SMTP_USER}>`,
+      to: NOTIF_EMAIL,
+      subject: `🧪 Test d'envoi — ${ts}`,
+      text: `Ceci est un email de test envoyé depuis le backend Fly à ${ts}.\n\nDestinataire configuré : ${NOTIF_EMAIL}\nExpéditeur : ${SMTP_USER}\n\nSi vous voyez ce message, le pipeline fonctionne.`,
+    });
+
+    console.log(`[test-email] ✅ Test envoyé à ${NOTIF_EMAIL} | messageId=${info.messageId}`);
+
+    res.json({
+      success: true,
+      sent_to: NOTIF_EMAIL,
+      sent_from: SMTP_USER,
+      messageId: info.messageId,
+      response: info.response,
+      timestamp: ts,
+    });
+  } catch (error) {
+    console.error("Erreur /api/test-email :", error);
+    res.status(500).json({
+      error: error.message,
+      code: error.code,
+    });
+  }
 });
 
 app.use("/api", calendarRoutes);

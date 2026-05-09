@@ -94,14 +94,20 @@ export default function BeforeAfterSlider({
     <div
       ref={containerRef}
       className={`relative overflow-hidden rounded-2xl select-none cursor-ew-resize bg-slate-900 group ${className}`}
+      style={{ touchAction: "pan-y" }}
       onMouseDown={(e) => handleStart(e.clientX)}
       onTouchStart={(e) => {
         if (e.touches[0]) handleStart(e.touches[0].clientX);
       }}
       onTouchMove={(e) => {
-        if (isDragging && e.touches[0]) handleMove(e.touches[0].clientX);
+        if (isDragging && e.touches[0]) {
+          // Empêche le scroll horizontal de la page pendant le drag du slider
+          if (e.cancelable) e.preventDefault();
+          handleMove(e.touches[0].clientX);
+        }
       }}
       onTouchEnd={() => setIsDragging(false)}
+      onTouchCancel={() => setIsDragging(false)}
     >
       {/* APRÈS — image de fond, toujours visible */}
       <ImageWithFallback

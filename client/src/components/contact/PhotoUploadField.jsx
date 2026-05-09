@@ -88,26 +88,8 @@ export default function PhotoUploadField({
         )}
       </div>
 
-      {/* Body : schéma + upload */}
+      {/* Body : schéma + upload — TOUTE la zone est cliquable et droppable quand pas de photo */}
       <div className="p-5 space-y-4">
-        {/* Schéma illustratif SVG (toujours fiable, pas de dépendance externe) */}
-        <div className="relative">
-          <div className="absolute -top-2 left-3 bg-slate-700 text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full z-10">
-            Comment cadrer
-          </div>
-          <div className="relative rounded-xl overflow-hidden bg-slate-100 aspect-video">
-            <PhotoExampleIllustration level={level} accent={`stroke-${accent}-500`} />
-            {/* Tip overlay */}
-            {tip && (
-              <div className="absolute top-3 right-3 max-w-[60%] bg-black/75 backdrop-blur-sm text-white text-xs font-medium px-3 py-2 rounded-lg flex items-start gap-2">
-                <Camera className="w-3.5 h-3.5 mt-0.5 shrink-0" />
-                <span>{tip}</span>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Zone d'upload */}
         {!hasFile ? (
           <label
             onDragOver={(e) => {
@@ -121,11 +103,7 @@ export default function PhotoUploadField({
               const file = e.dataTransfer.files?.[0];
               if (file) handleFile(file);
             }}
-            className={`block cursor-pointer border-2 border-dashed rounded-xl p-6 text-center transition-all ${
-              dragOver
-                ? `${colors.border} ${colors.bg} bg-opacity-5`
-                : "border-slate-300 hover:border-slate-400 bg-slate-50"
-            }`}
+            className="block cursor-pointer space-y-4"
           >
             <input
               ref={inputRef}
@@ -135,14 +113,46 @@ export default function PhotoUploadField({
               className="hidden"
               onChange={(e) => handleFile(e.target.files?.[0])}
             />
-            <div className={`w-12 h-12 rounded-full ${colors.bg} text-white flex items-center justify-center mx-auto mb-3`}>
-              <Upload className="w-5 h-5" />
+
+            {/* Schéma illustratif SVG — devient une zone de drop visuelle */}
+            <div className="relative">
+              <div className="absolute -top-2 left-3 bg-slate-700 text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full z-10">
+                {dragOver ? "Déposez ici" : "Comment cadrer"}
+              </div>
+              <div
+                className={`relative rounded-xl overflow-hidden aspect-video transition-all ${
+                  dragOver
+                    ? `${colors.border} border-2 ring-4 ring-${accent}-200 bg-${accent}-50/30`
+                    : "bg-slate-100 border-2 border-transparent"
+                }`}
+              >
+                <PhotoExampleIllustration level={level} accent={`stroke-${accent}-500`} />
+                {tip && (
+                  <div className="absolute top-3 right-3 max-w-[60%] bg-black/75 backdrop-blur-sm text-white text-xs font-medium px-3 py-2 rounded-lg flex items-start gap-2 pointer-events-none">
+                    <Camera className="w-3.5 h-3.5 mt-0.5 shrink-0" />
+                    <span>{tip}</span>
+                  </div>
+                )}
+              </div>
             </div>
-            <div className="text-sm font-bold text-abyss mb-1">
-              Touchez pour ajouter votre photo
-            </div>
-            <div className="text-xs text-slate-500">
-              Depuis votre appareil ou prenez la photo maintenant
+
+            {/* CTA upload */}
+            <div
+              className={`border-2 border-dashed rounded-xl p-6 text-center transition-all ${
+                dragOver
+                  ? `${colors.border} bg-${accent}-50/40`
+                  : "border-slate-300 hover:border-slate-400 bg-slate-50"
+              }`}
+            >
+              <div className={`w-12 h-12 rounded-full ${colors.bg} text-white flex items-center justify-center mx-auto mb-3`}>
+                <Upload className="w-5 h-5" />
+              </div>
+              <div className="text-sm font-bold text-abyss mb-1">
+                Touchez pour ajouter votre photo
+              </div>
+              <div className="text-xs text-slate-500">
+                Ou glissez votre photo directement sur l'illustration
+              </div>
             </div>
           </label>
         ) : (
@@ -154,7 +164,6 @@ export default function PhotoUploadField({
                 className="w-full h-full object-cover"
               />
             )}
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors" />
             <button
               type="button"
               onClick={removeFile}

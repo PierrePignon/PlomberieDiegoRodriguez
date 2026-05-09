@@ -137,7 +137,7 @@ router.post(
       `;
 
       await transporter.sendMail({
-        from: `"Plomberie Rodriguez Diego" <${process.env.SMTP_USER}>`,
+        from: `"Devis — Site Plomberie Rodriguez" <${process.env.SMTP_USER}>`,
         to: NOTIF_EMAIL,
         replyTo: email || undefined,
         subject: `📋 Nouvelle demande de devis — ${name}${service ? ` (${service})` : ""}`,
