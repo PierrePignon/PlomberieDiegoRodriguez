@@ -60,7 +60,7 @@ export default function About() {
                 { icon: <Shield className="w-6 h-6 text-kinetic" />, title: "Fiabilité", desc: "Ponctualité, respect des délais annoncés, suivi après intervention." },
                 { icon: <Award className="w-6 h-6 text-kinetic" />, title: "Expertise", desc: "Plomberie et carrelage maîtrisés de A à Z. Un seul artisan pour tout votre chantier." },
                 { icon: <CheckCircle className="w-6 h-6 text-kinetic" />, title: "Local", desc: "Artisan du terroir. Réactivité maximale sur Port-de-Bouc et environs." },
-                { icon: <Shield className="w-6 h-6 text-kinetic" />, title: "Assurance RC Pro", desc: "Couverture totale pour vos travaux. Justificatifs disponibles sur demande." },
+                { icon: <Shield className="w-6 h-6 text-kinetic" />, title: "Garantie décennale", desc: "Couverture totale pour vos travaux. Justificatifs disponibles sur demande." },
               ].map((v) => (
                 <div key={v.title} className="bg-mist rounded-2xl p-6 border border-slate-100">
                   <div className="mb-4">{v.icon}</div>

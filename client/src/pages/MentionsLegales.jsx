@@ -15,7 +15,7 @@ export default function MentionsLegales() {
             <p><strong>Téléphone :</strong> {BUSINESS.phoneDisplay}</p>
             <p><strong>Email :</strong> {BUSINESS.email}</p>
             <p><strong>SIRET :</strong> [À compléter]</p>
-            <p><strong>Assurance RC Pro :</strong> [À compléter]</p>
+            <p><strong>Garantie décennale :</strong> [À compléter]</p>
           </div>
           <div>
             <h2 className="text-base font-bold text-abyss mb-3">Hébergeur</h2>

@@ -3,8 +3,8 @@
   owner: "Diego Rodriguez",
   phone: "+33637759206",
   phoneDisplay: "06 37 75 92 06",
-  email: "diego.rodriguez13@hotmail.fr",
-  notifEmail: "plomberie.diego.rodriguez@gmail.com",
+  email: "diego.rodriguez131100@gmail.com",
+  notifEmail: "diego.rodriguez131100@gmail.com",
   logo: "https://media.base44.com/images/public/69d943d5cbef7978cbf110ac/e429aeb88_logo.png",
   address: "3 Sq. Guy de Maupassant",
   city: "Port-de-Bouc",
@@ -36,10 +36,10 @@
     { id: "renovation", main: true, title: "Création salle de bain", emoji: "🛁", short: "Votre salle de bain entièrement créée ou transformée par un seul artisan.", desc: "Plomberie, carrelage, faïence, pose de meubles sanitaires : Diego Rodriguez prend en charge l'intégralité de votre projet salle de bain, de la conception à la livraison. Un seul interlocuteur pour l'ensemble du chantier. Résultat garanti, propre et dans les délais convenus.", features: ["Conception & conseils en amont", "Dépose et évacuation ancienne salle de bain", "Plomberie et installation sanitaire", "Carrelage sol et mur / faïence", "Pose meubles, miroirs, accessoires"] },
     { id: "sanitaire", main: true, title: "Installation sanitaire", emoji: "🚿", short: "Pose WC, lavabo, douche, baignoire : installation soignée.", desc: "Pose ou remplacement de WC, lavabo, douche à l'italienne, baignoire balnéo… Plomberie Rodriguez Diego réalise l'ensemble de vos installations sanitaires avec soin. Travail propre, finitions impeccables, dans le respect des normes en vigueur.", features: ["Pose WC suspendu et à poser", "Installation douche à l'italienne", "Remplacement baignoire / vasque", "Robinetterie haut de gamme", "Respect des normes DTU"] },
     { id: "entretien", main: true, title: "Entretien plomberie", emoji: "🛡️", short: "Maintenance préventive pour éviter les pannes et dégâts.", desc: "Mieux vaut prévenir que guérir. Un entretien régulier de votre installation plomberie évite les pannes coûteuses et prolonge la durée de vie de vos équipements. Nous proposons des contrats d'entretien annuels adaptés aux particuliers et aux petites entreprises.", features: ["Inspection complète installation", "Détartrage robinets et chauffe-eau", "Contrôle pression et étanchéité", "Rapport d'état détaillé", "Contrat d'entretien annuel"] },
-    { id: "fuite", title: "Recherche de fuite", emoji: "💧", short: "Détection non-destructive avec rapport pour votre assurance.", desc: "Une fuite peut causer des dégâts considérables si elle n'est pas traitée rapidement. Plomberie Rodriguez Diego utilise des techniques de détection de fuite non destructives pour localiser avec précision l'origine du problème.", features: ["Détection acoustique et thermique", "Zéro destruction inutile", "Rapport d'expertise pour assurance", "Localisation précise sous chape ou encastré", "Réparation dans la foulée"] },
+    { id: "fuite", title: "Recherche de fuite", emoji: "💧", short: "Détection non-destructive avec rapport pour votre assurance.", desc: "Une fuite peut causer des dégâts considérables si elle n'est pas traitée rapidement. Plomberie Rodriguez Diego utilise des techniques de détection de fuite non destructives pour localiser avec précision l'origine du problème, avec possibilité de recherche destructive et remise en état à l’identique.", features: ["Détection acoustique et thermique", "Zéro destruction inutile", "Rapport d'expertise pour assurance", "Localisation précise sous chape ou encastré", "Réparation dans la foulée"] },
     { id: "debouchage", title: "Débouchage", emoji: "🪣", short: "WC, évier, douche, canalisation : débouchage professionnel.", desc: "Un WC bouché, une douche qui ne s'écoule plus, un évier obstrué ? Notre matériel professionnel (furet électrique, hydrocureur) vient à bout de tous les bouchons, même les plus tenaces.", features: ["Débouchage WC & évier", "Hydrocurage canalisations", "Furet électrique professionnel", "Inspection caméra si nécessaire", "Entretien préventif canalisations"] },
-    { id: "chauffe-eau", title: "Chauffe-eau & cumulus", emoji: "🔥", short: "Réparation, remplacement et installation de chauffe-eau.", desc: "Plus d'eau chaude ? Chauffe-eau qui fuit ? Nous intervenons sur tous types de chauffe-eau : électrique, thermodynamique, chauffe-eau solaire. Diagnostic rapide, remplacement ou réparation selon l'état de votre appareil.", features: ["Diagnostic chauffe-eau électrique et gaz", "Remplacement groupe de sécurité", "Installation chauffe-eau thermodynamique", "Conseil et devis comparatif", "Mise en service et contrôle"] },
-    { id: "carrelage", title: "Carrelage & faïence", emoji: "🏗️", short: "Pose, rénovation et réfection carrelage sol et mur.", desc: "En complément de la plomberie, Diego Rodriguez est spécialisé dans la pose et rénovation de carrelage. Sol, mur, faïence de salle de bain, terrasse : un travail soigné, des joints parfaits, des finitions professionnelles.", features: ["Pose carrelage sol et mur", "Faïence salle de bain et cuisine", "Dépose ancien carrelage", "Imperméabilisation bac douche", "Joints époxy haute résistance"] },
+    { id: "chauffe-eau", title: "Chauffe-eau & production d'eau chaude", emoji: "🔥", short: "Réparation, remplacement et installation de chauffe-eau.", desc: "Plus d'eau chaude ? Chauffe-eau qui fuit ? Nous intervenons sur tous types de chauffe-eau : électrique, thermodynamique, chauffe-eau solaire. Diagnostic rapide, remplacement ou réparation selon l'état de votre appareil.", features: ["Diagnostic chauffe-eau électrique et gaz", "Remplacement groupe de sécurité", "Installation chauffe-eau thermodynamique", "Conseil et devis comparatif", "Mise en service et contrôle"] },
+    { id: "carrelage", title: "Carrelage & faïence", emoji: "🏗️", short: "Pose, rénovation et réfection carrelage sol et mur.", desc: "En complément de la plomberie, Diego Rodriguez est spécialisé dans la pose et rénovation de carrelage. Sol, mur, faïence de salle de bain, terrasse : un travail soigné, des joints parfaits, des finitions professionnelles.", features: ["Pose carrelage sol et mur", "Faïence salle de bain", "Dépose ancien carrelage", "Imperméabilisation bac douche", "Joints époxy haute résistance"] },
   ],
   reviews: [
     { name: "Marie-Hélène Raymond", city: "Port-de-Bouc", rating: 5, text: "Rénovation complète d'une salle de bain (faïences, carrelage, plomberie, peintures murs et plafond, pose des sanitaires / meubles / miroirs / branchements électriques / déplacement radiateur chauffage central par sèche-serviette). Travail impeccable, je recommande vivement !", date: "Mai 2025" },
@@ -62,9 +62,78 @@
     { q: "Quel est votre délai d'intervention habituel ?", a: "Nous intervenons généralement sous 24 à 48h. Pour les demandes urgentes, nous faisons notre maximum pour répondre le jour même selon nos disponibilités." },
     { q: "Travaillez-vous le week-end ?", a: "Nous intervenons principalement du lundi au vendredi de 8h à 18h30. Des interventions le samedi matin sont possibles sur rendez-vous selon les disponibilités." },
   ],
+  // Réalisations :
+  //  - Si imageBefore ET imageAfter sont fournis → la réalisation apparaît
+  //    dans le slider AVANT / APRÈS de la home (BeforeAfterShowcase).
+  //  - Sinon → elle apparaît uniquement dans la galerie classique (champ "image").
+  // Pour ajouter une nouvelle transformation, ajouter un objet avec les deux URLs.
   realizations: [
-    { title: "Rénovation salle de bain", city: "Port-de-Bouc", type: "Rénovation", imageBefore: "https://media.base44.com/images/public/69d943d5cbef7978cbf110ac/63301040d_salledebain_avant.png", imageAfter: "https://media.base44.com/images/public/69d943d5cbef7978cbf110ac/c2ae3af7e_salledebain_apres.png", problem: "Salle de bain vétuste, plomberie entièrement à refaire", solution: "Création réseau plomberie, carrelage grand format, spots encastrés, sanitaires neufs", result: "Transformation totale — salle de bain moderne livrée clé en main" },
-    { title: "Remplacement chauffe-eau thermodynamique", city: "Port-de-Bouc", type: "Chauffe-eau", image: "https://media.base44.com/images/public/69d943d5cbef7978cbf110ac/bf241718f_chauffeeau.png", problem: "Ancien cumulus de 15 ans, consommation électrique élevée", solution: "Remplacement par chauffe-eau thermodynamique 200L Atlantic", result: "Économies de 60% sur la facture eau chaude, installation propre" },
-    { title: "Installation douche à l'italienne", city: "Istres", type: "Installation", image: "https://media.base44.com/images/public/69d943d5cbef7978cbf110ac/a1bdaa1a3_salledebain.png", problem: "Baignoire trop encombrante, besoin d'accessibilité", solution: "Dépose baignoire, création receveur à carreler, pose carrelage grand format", result: "Douche à l'italienne spacieuse, accessible, finition haut de gamme" },
+    // === Projet phare 1 : Rénovation totale ===
+    {
+      title: "Rénovation totale d'une salle de bain",
+      city: "Port-de-Bouc",
+      type: "Rénovation",
+      imageBefore: "/images/realisations/sdb-baignoire-avant.png",
+      imageAfter: "/images/realisations/sdb-baignoire-apres.webp",
+      problem: "Salle de bain vieillissante : faïence rose des années 80, baignoire fatiguée, plomberie d'origine, agencement à revoir",
+      solution: "Dépose totale, reprise plomberie complète, pose carrelage grand format ton pierre au sol et faïence claire au mur, baignoire neuve, paroi de douche vitrée, WC + bidet refaits, parquet bois imitation pour réchauffer l'ensemble",
+      result: "Pièce méconnaissable : plus lumineuse, plus fonctionnelle, parfaitement étanche. Le client a gagné en confort comme en valeur immobilière",
+      duration: "12 jours",
+    },
+    // === Projet phare 2 : Construction depuis le brut ===
+    // Angle : montrer le savoir-faire complet, du chantier vide au rendu fini
+    {
+      title: "Création complète d'une salle de bain en couloir",
+      city: "Port-de-Bouc",
+      type: "Création",
+      imageBefore: "/images/realisations/sdb-chantier-avant.png",
+      imageAfter: "/images/realisations/sdb-chantier-apres.png",
+      problem: "Espace vide à habiller : structure métallique apparente, câbles en attente, plomberie à créer de A à Z dans un volume étroit en couloir",
+      solution: "Mise en place de la plomberie complète, pose du plafond suspendu avec spots LED, double mur en faïence motif vagues, baignoire encastrée, vasque sur plan, WC suspendu, miroir lumineux et tapis de sol",
+      result: "Couloir transformé en salle de bain spa : le motif ondulé donne du caractère, l'éclairage indirect rappelle un hôtel, chaque mètre carré est exploité",
+      duration: "9 jours",
+    },
+    // === Projet phare 3 : Rénovation autour de la baignoire ===
+    {
+      title: "Rénovation salle de bain — confort et lumière",
+      city: "Port-de-Bouc",
+      type: "Rénovation",
+      imageBefore: "/images/realisations/sdb-renovation-avant.png",
+      imageAfter: "/images/realisations/sdb-renovation-apres.png",
+      problem: "Salle de bain familiale fonctionnelle mais datée, faïence ancienne, agencement et finitions à moderniser",
+      solution: "Dépose et reprise complète plomberie, pose nouvelle baignoire et robinetterie, faïence et carrelage modernes, repositionnement sanitaires, finitions soignées",
+      result: "La pièce gagne en lumière et en respiration. Confort retrouvé pour toute la famille",
+      duration: "7 jours",
+    },
+    // === FIN DES PHARES (avant/après) ===
   ],
+
+  // Galerie simple — chantiers récents en photo unique (apparaissent en bas de page)
+  // À enrichir au fur et à mesure que Diego fournit des photos.
+  // Format : { title, city, type, image, problem?, solution?, result? }
 };
+
+// Compatibilité : on garde des entrées image-unique dans realizations (le filtre dans Realisations.jsx
+// les bascule automatiquement dans le feed simple si imageBefore + imageAfter ne sont pas là tous les deux)
+// Galerie complémentaire — chantiers en photo unique (apparaissent dans le feed du bas)
+BUSINESS.realizations.push(
+  {
+    title: "Salle de bain design en blanc",
+    city: "Port-de-Bouc",
+    type: "Création",
+    image: "/images/realisations/sdb-design-blanche.png",
+    problem: "Espace à équiper avec un parti pris épuré",
+    solution: "Pose baignoire + WC, carrelage blanc grand format, finitions chromes",
+    result: "Atmosphère lumineuse et facile à entretenir",
+  },
+  {
+    title: "Remplacement chauffe-eau Atlantic",
+    city: "Port-de-Bouc",
+    type: "Chauffe-eau",
+    image: "/images/realisations/service-chauffe-eau.png",
+    problem: "Ancien cumulus en fin de vie, raccordement à reprendre",
+    solution: "Pose d'un chauffe-eau Atlantic neuf, reprise des arrivées et du tableau électrique",
+    result: "Eau chaude fiable, raccordements propres, prêt pour 10+ ans",
+  }
+);
+

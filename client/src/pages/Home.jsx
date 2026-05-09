@@ -3,6 +3,7 @@ import { Phone, Star, MapPin, CheckCircle, ChevronRight, Wrench, Droplets, Shiel
 import { useState } from "react";
 import { BUSINESS } from "../lib/business";
 import CTASection from "../components/shared/CTASection";
+import ServicesShowcase from "../components/shared/ServicesShowcase";
 
 function StarRating({ n = 5 }) {
   return (
@@ -66,7 +67,7 @@ export default function Home() {
 
             {/* Trust badges */}
             <div className="flex flex-wrap gap-3 mb-8">
-              {["Devis gratuit", "Artisan certifié", "Assurance RC Pro", "Travail garanti"].map((b) => (
+              {["Devis gratuit", "Artisan certifié", "Garantie décennale", "Travail garanti"].map((b) => (
                 <div key={b} className="flex items-center gap-1.5 bg-white/10 text-white text-sm px-3 py-1.5 rounded-full">
                   <CheckCircle className="w-3.5 h-3.5 text-kinetic" />
                   {b}
@@ -119,37 +120,8 @@ export default function Home() {
         </div>
       </div>
 
-      {/* SERVICES */}
-      <section className="py-20 bg-mist">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <div className="text-kinetic font-bold text-sm uppercase tracking-widest mb-3">Nos expertises</div>
-            <h2 className="text-3xl sm:text-4xl font-black text-abyss mb-4">Plomberie & Carrelage à Port-de-Bouc</h2>
-            <p className="text-slate-500 max-w-xl mx-auto">Un seul artisan pour tous vos travaux : plomberie, sanitaire, rénovation salle de bain et carrelage.</p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-            {topServices.map((s) => (
-              <Link
-                key={s.id}
-                to={`/services#${s.id}`}
-                className="group bg-white rounded-2xl p-6 border border-slate-100 hover:border-kinetic hover:shadow-xl transition-all"
-              >
-                <div className="text-3xl mb-4">{s.emoji}</div>
-                <h3 className="text-lg font-bold text-abyss mb-2 group-hover:text-kinetic transition-colors">{s.title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed mb-4">{s.short}</p>
-                <div className="flex items-center gap-1 text-kinetic text-sm font-semibold">
-                  En savoir plus <ChevronRight className="w-4 h-4" />
-                </div>
-              </Link>
-            ))}
-          </div>
-          <div className="text-center">
-            <Link to="/services" className="inline-flex items-center gap-2 bg-abyss text-white px-8 py-3.5 rounded-xl font-bold hover:bg-slate-800 transition-colors">
-              Voir tous nos services <ChevronRight className="w-5 h-5" />
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* SERVICES — scroll horizontal style Amazon/Apple TV */}
+      <ServicesShowcase />
 
       {/* ZONE D'INTERVENTION */}
       <section className="py-20 bg-white">
@@ -199,7 +171,7 @@ export default function Home() {
             {[
               { icon: <ThumbsUp className="w-8 h-8" />, value: "+50", label: "Avis 5★ Google" },
               { icon: <Wrench className="w-8 h-8" />, value: "100%", label: "Artisan local" },
-              { icon: <Shield className="w-8 h-8" />, value: "RC Pro", label: "Assuré & certifié" },
+              { icon: <Shield className="w-8 h-8" />, value: "Garantie Décennale", label: "Assuré & certifié" },
               { icon: <Clock className="w-8 h-8" />, value: "< 48h", label: "Délai d'intervention" },
             ].map((item) => (
               <div key={item.label} className="flex flex-col items-center gap-3">
@@ -217,7 +189,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <div className="text-kinetic font-bold text-sm uppercase tracking-widest mb-3">Nos travaux</div>
-            <h2 className="text-3xl sm:text-4xl font-black text-abyss mb-4">Réalisations récentes</h2>
+            <h2 className="text-3xl sm:text-4xl font-black text-abyss mb-4">D'autres réalisations</h2>
             <p className="text-slate-500 max-w-xl mx-auto">Découvrez quelques exemples de chantiers réalisés par Diego Rodriguez dans la zone de Port-de-Bouc.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">

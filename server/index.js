@@ -4,6 +4,7 @@ dotenv.config();
 import express from "express";
 import cors from "cors";
 import calendarRoutes from "./routes/calendar.js";
+import quoteRoutes from "./routes/quote.js";
 
 const app = express();
 
@@ -21,19 +22,25 @@ app.use(express.json());
 
 // Healthcheck endpoint (Fly + monitoring externe)
 app.get("/healthz", (req, res) => {
-  const envOk = Boolean(
+  const calendarOk = Boolean(
     process.env.GOOGLE_CALENDAR_ID &&
     process.env.GOOGLE_CLIENT_EMAIL &&
     process.env.GOOGLE_PRIVATE_KEY
   );
+  const smtpOk = Boolean(process.env.SMTP_USER && process.env.SMTP_PASS);
+
   res.json({
     status: "ok",
-    env: envOk ? "ok" : "missing-secrets",
+    services: {
+      calendar: calendarOk ? "ok" : "missing-secrets",
+      smtp: smtpOk ? "ok" : "missing-secrets",
+    },
     timestamp: new Date().toISOString()
   });
 });
 
 app.use("/api", calendarRoutes);
+app.use("/api", quoteRoutes);
 
 // Error handler global (filet de sécurité)
 app.use((err, req, res, next) => {
