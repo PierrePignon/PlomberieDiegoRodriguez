@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, forwardRef } from "react";
 import { MapPin, AlertCircle, Wrench, Sparkles, Clock } from "lucide-react";
 import BeforeAfterSlider from "../shared/BeforeAfterSlider";
 import useScrollReveal from "../../hooks/useScrollReveal";
+import { slug } from "../../lib/utils";
 
 /**
  * Réalisation phare en mode "sticky scroll storytelling" premium.
@@ -42,7 +43,8 @@ export default function FeaturedRealization({ realization, index, total = 1 }) {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-white"
+      id={slug(r.title)}
+      className="relative bg-white scroll-mt-24"
       style={{
         // Bg gradient subtil qui change légèrement entre projets
         background: index % 2 === 0

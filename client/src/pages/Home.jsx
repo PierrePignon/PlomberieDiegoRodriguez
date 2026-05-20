@@ -2,6 +2,7 @@
 import { Phone, Star, MapPin, CheckCircle, ChevronRight, Wrench, Droplets, Shield, Clock, ThumbsUp, ExternalLink, MessageCircle } from "lucide-react";
 import { useState } from "react";
 import { BUSINESS } from "../lib/business";
+import { slug } from "../lib/utils";
 import CTASection from "../components/shared/CTASection";
 import ServicesShowcase from "../components/shared/ServicesShowcase";
 
@@ -41,87 +42,120 @@ export default function Home() {
 
   return (
     <>
-      {/* HERO */}
-      <section className="relative bg-abyss min-h-[90vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0 blueprint-bg opacity-30" />
+      {/* SERVICES — scroll horizontal style Amazon : Diego veut que ce soit la première chose visible */}
+      <ServicesShowcase />
+
+      {/* BANDEAU PRÉSENTATION — compact, sobre, texte sombre, photo discrète en bg */}
+      <section className="relative bg-mist border-y border-slate-200 overflow-hidden">
+        {/* Photo discrète en background, voile blanc par-dessus pour rendre le texte lisible */}
         <div
-          className="absolute right-0 top-0 bottom-0 w-full lg:w-1/2 bg-cover bg-center opacity-20 lg:opacity-40"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1584622781564-1d987f7333c1?auto=format&fit=crop&w=1200&q=80')" }}
+          className="absolute inset-0 bg-cover bg-center opacity-20"
+          style={{ backgroundImage: "url('/images/realisations/service-depannage.jpg')" }}
+          aria-hidden="true"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-abyss via-abyss/90 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-mist via-mist/90 to-mist/70" aria-hidden="true" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 bg-kinetic/10 border border-kinetic/30 text-kinetic px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              <MapPin className="w-4 h-4" />
-              Port-de-Bouc & Bouches-du-Rhône
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
+          <div className="grid lg:grid-cols-12 gap-8 items-center">
+            {/* Bloc texte (gauche) */}
+            <div className="lg:col-span-7">
+              <div className="inline-flex items-center gap-2 bg-white border border-slate-200 text-abyss px-3 py-1.5 rounded-full text-xs font-semibold mb-4">
+                <MapPin className="w-3.5 h-3.5 text-kinetic" />
+                Port-de-Bouc & Bouches-du-Rhône
+              </div>
+
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-abyss mb-3 leading-tight">
+                Plombier à Port-de-Bouc — <span className="text-kinetic">artisan local depuis 2018</span>
+              </h1>
+
+              <p className="text-slate-700 text-base md:text-lg max-w-2xl leading-relaxed mb-5">
+                Plomberie, rénovation salle de bain & carrelage. <strong>Diego Rodriguez</strong>, artisan sérieux, intervient rapidement sur Port-de-Bouc, Martigues, Fos-sur-Mer, Istres et alentours.
+              </p>
+
+              {/* Trust badges — version discrète sur fond clair */}
+              <div className="flex flex-wrap gap-2 mb-6">
+                {["Devis gratuit", "Artisan certifié", "Garantie décennale", "Travail garanti"].map((b) => (
+                  <div key={b} className="flex items-center gap-1.5 bg-white border border-slate-200 text-slate-700 text-xs font-medium px-2.5 py-1 rounded-full">
+                    <CheckCircle className="w-3 h-3 text-kinetic" />
+                    {b}
+                  </div>
+                ))}
+              </div>
+
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href={`tel:${BUSINESS.phone}`}
+                  className="inline-flex items-center justify-center gap-2 bg-kinetic hover:bg-orange-700 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-md"
+                >
+                  <Phone className="w-5 h-5" />
+                  {BUSINESS.phoneDisplay}
+                </a>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center gap-2 bg-white border border-slate-300 hover:border-abyss text-abyss px-6 py-3 rounded-xl font-bold transition-all"
+                >
+                  Demander un devis
+                  <ChevronRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  to="/rendez-vous"
+                  className="inline-flex items-center justify-center gap-2 text-abyss hover:text-kinetic px-3 py-3 font-semibold transition-colors text-sm"
+                >
+                  Prendre RDV en ligne →
+                </Link>
+              </div>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
-              Votre plombier de
-              <span className="block text-kinetic">confiance à</span>
-              Port-de-Bouc
-            </h1>
-            <p className="text-slate-300 text-lg sm:text-xl mb-8 max-w-xl leading-relaxed">
-              Plomberie, rénovation salle de bain & carrelage. <strong className="text-white">Diego Rodriguez</strong>, artisan local sérieux, intervient rapidement sur Port-de-Bouc et toute la zone.
-            </p>
 
-            {/* Trust badges */}
-            <div className="flex flex-wrap gap-3 mb-8">
-              {["Devis gratuit", "Artisan certifié", "Garantie décennale", "Travail garanti"].map((b) => (
-                <div key={b} className="flex items-center gap-1.5 bg-white/10 text-white text-sm px-3 py-1.5 rounded-full">
-                  <CheckCircle className="w-3.5 h-3.5 text-kinetic" />
-                  {b}
+            {/* Bloc note + rappel d'horaire (droite) */}
+            <div className="lg:col-span-5 lg:pl-8 lg:border-l lg:border-slate-300">
+              <div className="space-y-4">
+                {/* Note Google */}
+                <div className="flex items-center gap-3">
+                  <StarRating />
+                  <div className="flex-1">
+                    <div className="font-black text-abyss text-lg">4,9 / 5</div>
+                    <div className="text-slate-500 text-xs">+50 avis vérifiés Google</div>
+                  </div>
+                  <a
+                    href={BUSINESS.googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-kinetic text-xs font-bold hover:underline whitespace-nowrap"
+                  >
+                    Voir →
+                  </a>
                 </div>
-              ))}
-            </div>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href={`tel:${BUSINESS.phone}`}
-                className="flex items-center justify-center gap-3 bg-kinetic hover:bg-orange-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all pulse-glow shadow-2xl"
-              >
-                <Phone className="w-6 h-6" />
-                {BUSINESS.phoneDisplay}
-              </a>
-              <Link
-                to="/contact"
-                className="flex items-center justify-center gap-3 bg-white/10 border border-white/30 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all"
-              >
-                Demander un devis
-                <ChevronRight className="w-5 h-5" />
-              </Link>
-            </div>
+                {/* Séparateur fin */}
+                <div className="h-px bg-slate-200" />
 
-            {/* Rating */}
-            <div className="flex items-center gap-3 mt-8">
-              <StarRating />
-              <span className="text-white font-bold">4.9/5</span>
-              <span className="text-slate-400 text-sm">· +50 avis vérifiés Google</span>
+                {/* Horaires */}
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center shrink-0">
+                    <Clock className="w-5 h-5 text-kinetic" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="font-bold text-abyss text-sm">Intervention rapide</div>
+                    <div className="text-slate-500 text-xs">Lun-Ven · {BUSINESS.hoursShort}</div>
+                  </div>
+                </div>
+
+                {/* Zone */}
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center shrink-0">
+                    <MapPin className="w-5 h-5 text-kinetic" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="font-bold text-abyss text-sm">10 communes couvertes</div>
+                    <div className="text-slate-500 text-xs">Port-de-Bouc, Martigues, Fos, Istres…</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
-
-      {/* URGENCE BANDEAU */}
-      <div className="bg-slate-900 border-y border-slate-700 py-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3 text-white">
-            <Clock className="w-5 h-5 text-kinetic" />
-            <span className="font-semibold">Intervention rapide lun–ven <span className="text-kinetic">{BUSINESS.hoursShort}</span></span>
-          </div>
-          <a
-            href={`tel:${BUSINESS.phone}`}
-            className="flex items-center gap-2 bg-kinetic text-white px-6 py-2.5 rounded-lg font-bold hover:bg-orange-700 transition-colors"
-          >
-            <Phone className="w-4 h-4" />
-            Appelez maintenant : {BUSINESS.phoneDisplay}
-          </a>
-        </div>
-      </div>
-
-      {/* SERVICES — scroll horizontal style Amazon/Apple TV */}
-      <ServicesShowcase />
 
       {/* ZONE D'INTERVENTION */}
       <section className="py-20 bg-white">
@@ -202,7 +236,7 @@ export default function Home() {
                 return (
                   <Link
                     key={r.title}
-                    to="/realisations"
+                    to={`/realisations#${slug(r.title)}`}
                     className="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-xl transition-all block"
                   >
                     <div className="relative h-52 overflow-hidden">

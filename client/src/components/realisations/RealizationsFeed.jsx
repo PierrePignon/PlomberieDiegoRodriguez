@@ -1,5 +1,6 @@
 import { MapPin } from "lucide-react";
 import useScrollReveal from "../../hooks/useScrollReveal";
+import { slug } from "../../lib/utils";
 
 /**
  * Feed simple "D'autres chantiers récents".
@@ -51,8 +52,9 @@ function FeedCard({ item, delay }) {
   return (
     <div
       ref={ref}
+      id={slug(item.title)}
       style={{ transitionDelay: `${delay}ms` }}
-      className={`group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-500 ${
+      className={`group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-500 scroll-mt-24 ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
       }`}
     >
