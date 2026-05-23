@@ -45,6 +45,43 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
+    <!--
+      ========================================================================
+      ANALYTICS & SEARCH CONSOLE — BOS MAINTENANCE
+      ========================================================================
+      AVANT DE COMMITTER :
+      1. Crée un compte Plausible (plausible.io), ajoute le domaine plomberie-diego-rodriguez.fr
+         puis le script ci-dessous est déjà bon (data-domain = ce domaine).
+      2. Crée une propriété dans Google Search Console pour plomberie-diego-rodriguez.fr,
+         choisis méthode "Balise HTML", récupère le code de vérification (format "abc123...")
+         et REMPLACE "REMPLACER_PAR_LE_CODE_GOOGLE" ci-dessous par ta valeur.
+      3. Soumets sitemap.xml dans Search Console après vérification.
+      ========================================================================
+    -->
+
+    <!-- Google Search Console verification — À COMPLÉTER -->
+    <meta name="google-site-verification" content="REMPLACER_PAR_LE_CODE_GOOGLE" />
+
+    <!--
+      Plausible Analytics : à activer quand tu auras 3+ clients (plan Growth 14€/3 sites).
+      Pour l'instant on se contente de Google Search Console (gratuit) + Google Business Profile Insights (gratuit, natif).
+      Quand tu seras prêt, décommente le bloc ci-dessous et le script d'auto-tracking.
+    -->
+    <!--
+    <script defer data-domain="plomberie-diego-rodriguez.fr" src="https://plausible.io/js/script.outbound-links.tagged-events.js"></script>
+    <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+    <script>
+      document.addEventListener('click', function(e) {
+        var a = e.target.closest('a');
+        if (!a || !window.plausible) return;
+        var href = a.getAttribute('href') || '';
+        if (href.startsWith('tel:')) window.plausible('Phone Click');
+        else if (href.startsWith('mailto:')) window.plausible('Email Click');
+        else if (href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp') !== -1) window.plausible('WhatsApp Click');
+      }, true);
+    </script>
+    -->
+
     <!-- Preconnect : performance -->
     <link rel="preconnect" href="https://media.base44.com" crossorigin />
     <link rel="preconnect" href="https://rodriguez-backend.fly.dev" crossorigin />

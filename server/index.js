@@ -36,9 +36,11 @@ app.get("/healthz", (req, res) => {
       smtp: smtpOk ? "ok" : "missing-secrets",
     },
     config: {
-      // Permet de vérifier d'un coup d'œil où partent les notifications
+      // Permet de vérifier d'un coup d'œil où partent les notifications + RDV
       notif_target: process.env.NOTIF_EMAIL || process.env.SMTP_USER || "(non défini)",
       smtp_sender: process.env.SMTP_USER || "(non défini)",
+      calendar_target: process.env.GOOGLE_CALENDAR_ID || "(non défini)",
+      service_account: process.env.GOOGLE_CLIENT_EMAIL || "(non défini)",
     },
     timestamp: new Date().toISOString()
   });

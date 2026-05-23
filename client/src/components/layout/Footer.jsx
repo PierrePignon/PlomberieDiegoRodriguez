@@ -93,7 +93,7 @@ export default function Footer() {
               </a>
               <div className="mt-3 text-xs text-slate-500">
                 <div className="font-medium text-slate-400">Schema.org LocalBusiness</div>
-                <div>SIRET : [À compléter]</div>
+                <div>SIRET : 84518474600012</div>
               </div>
             </div>
           </div>
