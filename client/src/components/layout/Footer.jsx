@@ -74,12 +74,23 @@ export default function Footer() {
 
             {/* Google + Zone */}
             <div>
-              <h3 className="text-white font-bold text-sm uppercase tracking-widest mb-5">Zone principale</h3>
+              <h3 className="text-white font-bold text-sm uppercase tracking-widest mb-5">Zones d'intervention</h3>
               <div className="flex flex-wrap gap-1 mb-5">
                 {BUSINESS.zones.filter(z => z.primary).map((z) => (
-                  <span key={z.name} className="bg-slate-800 text-slate-300 text-xs px-2 py-1 rounded">
-                    {z.name}
-                  </span>
+                  z.hasPage ? (
+                    <Link
+                      key={z.name}
+                      to={`/plombier-${z.slug}`}
+                      className="bg-slate-800 text-slate-300 hover:bg-kinetic hover:text-white text-xs px-2 py-1 rounded transition-colors"
+                      title={`Plombier ${z.name}`}
+                    >
+                      {z.name}
+                    </Link>
+                  ) : (
+                    <span key={z.name} className="bg-slate-800 text-slate-300 text-xs px-2 py-1 rounded">
+                      {z.name}
+                    </span>
+                  )
                 ))}
               </div>
               <a

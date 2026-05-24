@@ -12,6 +12,8 @@ import Home from './pages/Home';
 import Services from './pages/Services';
 import Realisations from './pages/Realisations';
 import Zones from './pages/Zones';
+import PlombierVille from './pages/PlombierVille';
+import { BUSINESS } from './lib/business';
 import Avis from './pages/Avis';
 import Contact from './pages/Contact';
 import RendezVous from './pages/Rendez-vous';
@@ -49,6 +51,15 @@ const AuthenticatedApp = () => {
       <Route path="/services" element={<Services />} />
       <Route path="/realisations" element={<Realisations />} />
       <Route path="/zones" element={<Zones />} />
+      {/* Pages villes : React Router v6 n'accepte pas les params au milieu d'un segment
+          ("/plombier-:slug" ne match pas). On génère une route par ville à partir des données. */}
+      {BUSINESS.zones.filter((z) => z.hasPage).map((z) => (
+        <Route
+          key={z.slug}
+          path={`/plombier-${z.slug}`}
+          element={<PlombierVille slug={z.slug} />}
+        />
+      ))}
       <Route path="/avis" element={<Avis />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/rendez-vous" element={<RendezVous />} />

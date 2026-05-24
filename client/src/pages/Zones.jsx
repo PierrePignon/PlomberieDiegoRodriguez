@@ -53,6 +53,15 @@ export default function Zones() {
                       </a>
                     </div>
                     <p className="mt-3 text-sm text-slate-500 leading-relaxed">{z.desc}</p>
+                    {z.hasPage && (
+                      <Link
+                        to={`/plombier-${z.slug}`}
+                        className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-kinetic hover:underline"
+                      >
+                        En savoir plus sur nos interventions à {z.name}
+                        <ChevronRight className="w-3 h-3" />
+                      </Link>
+                    )}
                   </div>
                 ))}
               </div>

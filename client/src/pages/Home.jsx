@@ -170,13 +170,29 @@ export default function Home() {
                 Diego Rodriguez intervient rapidement dans toute la zone de Port-de-Bouc (13110) et les communes voisines des Bouches-du-Rhône.
               </p>
               <div className="grid grid-cols-2 gap-3 mb-8">
-                {BUSINESS.zones.filter(z => z.primary).map((z) => (
-                  <div key={z.name} className="flex items-center gap-2 text-sm">
-                    <div className="w-2 h-2 rounded-full bg-kinetic shrink-0" />
-                    <span className="font-medium text-abyss">{z.name}</span>
-                    <span className="text-slate-400 text-xs">{z.delay}</span>
-                  </div>
-                ))}
+                {BUSINESS.zones.filter(z => z.primary).map((z) => {
+                  const inner = (
+                    <>
+                      <div className="w-2 h-2 rounded-full bg-kinetic shrink-0" />
+                      <span className="font-medium text-abyss">{z.name}</span>
+                      <span className="text-slate-400 text-xs">{z.delay}</span>
+                    </>
+                  );
+                  return z.hasPage ? (
+                    <Link
+                      key={z.name}
+                      to={`/plombier-${z.slug}`}
+                      className="flex items-center gap-2 text-sm group hover:text-kinetic transition-colors"
+                      title={`Plombier ${z.name} — page dédiée`}
+                    >
+                      {inner}
+                    </Link>
+                  ) : (
+                    <div key={z.name} className="flex items-center gap-2 text-sm">
+                      {inner}
+                    </div>
+                  );
+                })}
               </div>
               <Link to="/zones" className="inline-flex items-center gap-2 text-kinetic font-bold hover:underline">
                 Voir toutes les zones <ChevronRight className="w-4 h-4" />
