@@ -47,7 +47,7 @@ export default function PlombierVille({ slug: propSlug }) {
     .filter(Boolean);
 
   const canonical = `${SITE_URL}/plombier-${ville.slug}`;
-  const title = `Plombier ${ville.name} (${ville.postalCode}) — Dépannage, Rénovation | Diego Rodriguez`;
+  const title = `Plombier ${ville.name} (${ville.postalCode}) — Dépannage 7j/7 · Devis gratuit | Rodriguez`;
   const description = `Plombier artisan à ${ville.name} (${ville.postalCode}). Dépannage plomberie, recherche de fuite, rénovation salle de bain, carrelage. Devis gratuit, intervention rapide depuis Port-de-Bouc. ☎ 06 37 75 92 06.`;
 
   // Schema.org : Service + FAQPage (combinés via @graph) pour rich snippets Google.

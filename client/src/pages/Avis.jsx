@@ -1,4 +1,5 @@
 ﻿import { Star, ExternalLink, Quote } from "lucide-react";
+import usePageMeta from "../components/seo/usePageMeta";
 import { BUSINESS } from "../lib/business";
 import CTASection from "../components/shared/CTASection";
 
@@ -13,6 +14,7 @@ function StarRating({ n = 5 }) {
 }
 
 export default function Avis() {
+  usePageMeta({ title: "Avis clients — Plombier Diego Rodriguez, Port-de-Bouc", description: "Les avis des clients de Diego Rodriguez, plombier à Port-de-Bouc : ponctualité, travail soigné, devis clair. Découvrez leurs retours et confiez-nous votre projet.", canonical: "https://plomberie-diego-rodriguez.fr/avis" });
   return (
     <>
       <section className="bg-abyss py-20 relative overflow-hidden">

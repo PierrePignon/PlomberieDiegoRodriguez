@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import usePageMeta from "../components/seo/usePageMeta";
 import { ArrowRight, Phone } from "lucide-react";
 import { BUSINESS } from "../lib/business";
 import FeaturedRealization from "../components/realisations/FeaturedRealization";
@@ -6,6 +7,7 @@ import RealizationsFeed from "../components/realisations/RealizationsFeed";
 import CTASection from "../components/shared/CTASection";
 
 export default function Realisations() {
+  usePageMeta({ title: "Réalisations — Chantiers de plomberie & rénovation | Diego Rodriguez", description: "Les chantiers réalisés par Diego Rodriguez à Port-de-Bouc et dans le 13 : rénovations de salle de bain, carrelage, plomberie. Photos avant / après. Devis gratuit.", canonical: "https://plomberie-diego-rodriguez.fr/realisations" });
   // Réalisations PHARES = celles qui ont un avant/après
   const featured = BUSINESS.realizations.filter(
     (r) => r.imageBefore && r.imageAfter

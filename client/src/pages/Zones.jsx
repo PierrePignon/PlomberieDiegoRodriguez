@@ -1,9 +1,11 @@
 ﻿import { Link } from "react-router-dom";
+import usePageMeta from "../components/seo/usePageMeta";
 import { MapPin, Clock, Phone, ChevronRight } from "lucide-react";
 import { BUSINESS } from "../lib/business";
 import CTASection from "../components/shared/CTASection";
 
 export default function Zones() {
+  usePageMeta({ title: "Zones d'intervention — Port-de-Bouc, Martigues, Fos, Istres…", description: "Diego Rodriguez, plombier, intervient à Port-de-Bouc, Martigues, Fos-sur-Mer, Istres, Carry-le-Rouet et alentours. Intervention rapide, devis gratuit. ☎ 06 37 75 92 06.", canonical: "https://plomberie-diego-rodriguez.fr/zones" });
   const primary = BUSINESS.zones.filter((z) => z.primary);
   const secondary = BUSINESS.zones.filter((z) => !z.primary);
 

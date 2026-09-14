@@ -1,9 +1,11 @@
 ﻿import { Link } from "react-router-dom";
+import usePageMeta from "../components/seo/usePageMeta";
 import { CheckCircle, Shield, Star, Award, Phone } from "lucide-react";
 import { BUSINESS } from "../lib/business";
 import CTASection from "../components/shared/CTASection";
 
 export default function About() {
+  usePageMeta({ title: "À propos — Diego Rodriguez, plombier artisan à Port-de-Bouc", description: "Diego Rodriguez, artisan plombier à Port-de-Bouc : plomberie et carrelage de A à Z, garantie décennale, devis transparent. Un seul artisan pour tout votre chantier.", canonical: "https://plomberie-diego-rodriguez.fr/a-propos" });
   return (
     <>
       <section className="bg-abyss py-20 relative overflow-hidden">

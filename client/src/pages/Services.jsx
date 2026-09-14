@@ -1,9 +1,11 @@
 ﻿import { Link } from "react-router-dom";
+import usePageMeta from "../components/seo/usePageMeta";
 import { Phone, CheckCircle, ChevronRight } from "lucide-react";
 import { BUSINESS } from "../lib/business";
 import CTASection from "../components/shared/CTASection";
 
 export default function Services() {
+  usePageMeta({ title: "Services plomberie Port-de-Bouc — Dépannage, fuite, rénovation", description: "Tous les services de plomberie à Port-de-Bouc : dépannage d'urgence, recherche de fuite, débouchage, rénovation de salle de bain et carrelage. Devis gratuit. ☎ 06 37 75 92 06.", canonical: "https://plomberie-diego-rodriguez.fr/services" });
   return (
     <>
       {/* Hero */}

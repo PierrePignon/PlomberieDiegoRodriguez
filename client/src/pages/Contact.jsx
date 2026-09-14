@@ -1,4 +1,5 @@
 import { useState } from "react";
+import usePageMeta from "../components/seo/usePageMeta";
 import {
   Phone,
   Mail,
@@ -22,6 +23,7 @@ const BACKEND_URL = "https://rodriguez-backend.fly.dev";
 // indépendante de toute source externe (PhotoExampleIllustration).
 
 export default function Contact() {
+  usePageMeta({ title: "Contact & devis gratuit — Plombier Port-de-Bouc | Rodriguez", description: "Contactez Diego Rodriguez, plombier à Port-de-Bouc : devis gratuit, réponse rapide, intervention 7j/7. ☎ 06 37 75 92 06 ou via le formulaire.", canonical: "https://plomberie-diego-rodriguez.fr/contact" });
   const [form, setForm] = useState({
     name: "",
     phone: "",
