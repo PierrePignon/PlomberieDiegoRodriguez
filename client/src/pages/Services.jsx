@@ -2,6 +2,8 @@
 import usePageMeta from "../components/seo/usePageMeta";
 import { Phone, CheckCircle, ChevronRight } from "lucide-react";
 import { BUSINESS } from "../lib/business";
+
+const SERVICE_SLUGS = { fuite: "recherche-de-fuite", debouchage: "debouchage", "chauffe-eau": "chauffe-eau" };
 import CTASection from "../components/shared/CTASection";
 
 export default function Services() {
@@ -91,6 +93,11 @@ export default function Services() {
                     <Link to="/contact" className="flex items-center gap-2 bg-abyss text-white px-6 py-3 rounded-lg font-bold hover:bg-slate-800 transition-colors text-sm">
                       Devis gratuit <ChevronRight className="w-4 h-4" />
                     </Link>
+                    {SERVICE_SLUGS[s.id] && (
+                      <Link to={`/${SERVICE_SLUGS[s.id]}`} className="flex items-center gap-2 bg-white border border-slate-200 text-abyss px-6 py-3 rounded-lg font-bold hover:border-kinetic transition-colors text-sm">
+                        En savoir plus <ChevronRight className="w-4 h-4" />
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>

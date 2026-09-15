@@ -13,6 +13,7 @@ import Services from './pages/Services';
 import Realisations from './pages/Realisations';
 import Zones from './pages/Zones';
 import PlombierVille from './pages/PlombierVille';
+import ServicePage, { SERVICE_PAGES } from './pages/ServicePage';
 import { BUSINESS } from './lib/business';
 import Avis from './pages/Avis';
 import Contact from './pages/Contact';
@@ -59,6 +60,9 @@ const AuthenticatedApp = () => {
           path={`/plombier-${z.slug}`}
           element={<PlombierVille slug={z.slug} />}
         />
+      ))}
+      {SERVICE_PAGES.map((s) => (
+        <Route key={s.slug} path={`/${s.slug}`} element={<ServicePage slug={s.slug} />} />
       ))}
       <Route path="/avis" element={<Avis />} />
       <Route path="/contact" element={<Contact />} />
