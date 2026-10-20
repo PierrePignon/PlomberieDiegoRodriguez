@@ -1,20 +1,50 @@
-﻿import { Star, ExternalLink, Quote } from "lucide-react";
+﻿import { useState } from "react";
+import { Star, ExternalLink, ChevronDown, Loader2 } from "lucide-react";
 import usePageMeta from "../components/seo/usePageMeta";
 import { BUSINESS } from "../lib/business";
 import CTASection from "../components/shared/CTASection";
+
+const INITIAL_COUNT = 6;
+const BATCH_SIZE = 6;
 
 function StarRating({ n = 5 }) {
   return (
     <div className="flex gap-0.5">
       {Array.from({ length: n }).map((_, i) => (
-        <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+        <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
       ))}
     </div>
   );
 }
 
+function ReviewCard({ r }) {
+  return (
+    <div className="bg-white rounded-2xl border border-slate-100 p-6 hover:shadow-lg transition-all">
+      <StarRating n={r.rating} />
+      <p className="mt-4 text-slate-700 text-sm leading-relaxed italic">"{r.text}"</p>
+      <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between">
+        <div>
+          <div className="font-bold text-abyss text-sm">{r.name}</div>
+          <div className="text-xs text-slate-400">{r.city} · {r.date}</div>
+        </div>
+        <div className="text-xs font-bold text-kinetic bg-kinetic/10 px-2 py-1 rounded">✓ Google</div>
+      </div>
+    </div>
+  );
+}
+
 export default function Avis() {
-  usePageMeta({ title: "Avis clients — Plombier Diego Rodriguez, Port-de-Bouc", description: "Les avis des clients de Diego Rodriguez, plombier à Port-de-Bouc : ponctualité, travail soigné, devis clair. Découvrez leurs retours et confiez-nous votre projet.", canonical: "https://plomberie-diego-rodriguez.fr/avis" });
+  usePageMeta({
+    title: "Avis clients — Plombier Diego Rodriguez, Port-de-Bouc",
+    description: "Les avis des clients de Diego Rodriguez, plombier à Port-de-Bouc : ponctualité, travail soigné, devis clair. Découvrez leurs retours et confiez-nous votre projet.",
+    canonical: "https://plomberie-diego-rodriguez.fr/avis",
+  });
+
+  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
+  const totalReviews = BUSINESS.reviews.length;
+  const visibleReviews = BUSINESS.reviews.slice(0, visibleCount);
+  const hasMore = visibleCount < totalReviews;
+
   return (
     <>
       <section className="bg-abyss py-20 relative overflow-hidden">
@@ -24,44 +54,76 @@ export default function Avis() {
           <h1 className="text-4xl sm:text-5xl font-black text-white mb-5">Avis clients</h1>
           <div className="flex items-center justify-center gap-3 mb-4">
             <StarRating />
-            <span className="text-white font-bold text-xl">4.9/5</span>
+            <span className="text-white font-bold text-xl">{BUSINESS.rating.toString().replace(".", ",")}/5</span>
           </div>
-          <p className="text-slate-300">+50 avis vérifiés sur Google · Port-de-Bouc et région</p>
+          <p className="text-slate-300">
+            +{BUSINESS.reviewCount} avis vérifiés sur Google · Port-de-Bouc et région
+          </p>
         </div>
       </section>
 
       <section className="py-20 bg-mist">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {BUSINESS.reviews.map((r) => (
-              <div
-                key={r.name + r.date}
-                className="bg-white rounded-2xl border border-slate-100 p-6 hover:shadow-lg transition-all"
-              >
-                <StarRating n={r.rating} />
-                <p className="mt-4 text-slate-700 text-sm leading-relaxed italic">"{r.text}"</p>
-                <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between">
-                  <div>
-                    <div className="font-bold text-abyss text-sm">{r.name}</div>
-                    <div className="text-xs text-slate-400">{r.city} · {r.date}</div>
-                  </div>
-                  <div className="text-xs font-bold text-kinetic bg-kinetic/10 px-2 py-1 rounded">✓ Google</div>
-                </div>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+            {visibleReviews.map((r, i) => (
+              <ReviewCard key={`${r.name}-${r.date}-${i}`} r={r} />
             ))}
           </div>
+
+          {/* Afficher plus */}
+          {hasMore && (
+            <div className="text-center mb-12">
+              <button
+                onClick={() => setVisibleCount((v) => Math.min(v + BATCH_SIZE, totalReviews))}
+                className="inline-flex items-center gap-2 bg-white border-2 border-slate-200 hover:border-abyss text-abyss px-8 py-3.5 rounded-xl font-bold transition-all shadow-sm hover:shadow-md"
+              >
+                Afficher plus d'avis
+                <ChevronDown className="w-4 h-4" />
+                <span className="text-xs font-medium text-slate-500">
+                  ({visibleCount}/{totalReviews})
+                </span>
+              </button>
+              <p className="text-xs text-slate-400 mt-3">
+                Voir tous les {BUSINESS.reviewCount}+ avis sur{" "}
+                <a
+                  href={BUSINESS.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-kinetic font-semibold hover:underline"
+                >
+                  la fiche Google
+                </a>
+              </p>
+            </div>
+          )}
+
+          {!hasMore && totalReviews > INITIAL_COUNT && (
+            <p className="text-center text-sm text-slate-500 mb-12">
+              Vous avez vu tous les témoignages sélectionnés —{" "}
+              <a
+                href={BUSINESS.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-kinetic font-semibold hover:underline"
+              >
+                voir les {BUSINESS.reviewCount}+ avis Google
+              </a>
+            </p>
+          )}
 
           {/* Call to Google */}
           <div className="bg-abyss rounded-2xl p-10 text-center">
             <h2 className="text-2xl font-black text-white mb-3">Vous avez fait appel à Diego ?</h2>
-            <p className="text-slate-400 mb-6 max-w-xl mx-auto">Votre avis compte énormément pour nous et pour nos futurs clients. Prenez 1 minute pour laisser votre témoignage sur Google !</p>
+            <p className="text-slate-400 mb-6 max-w-xl mx-auto">
+              Votre avis compte énormément pour nous et pour nos futurs clients. Prenez 1 minute pour laisser votre témoignage sur Google !
+            </p>
             <a
               href={BUSINESS.googleMapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-kinetic text-white px-8 py-4 rounded-xl font-bold hover:bg-orange-700 transition-colors pulse-glow"
+              className="inline-flex items-center gap-2 bg-kinetic text-white px-8 py-4 rounded-xl font-bold hover:bg-orange-800 transition-colors pulse-glow"
             >
-              <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+              <Star className="w-5 h-5 fill-amber-400 text-amber-400" />
               Laisser un avis Google
               <ExternalLink className="w-4 h-4" />
             </a>
