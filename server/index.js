@@ -5,6 +5,7 @@ import express from "express";
 import cors from "cors";
 import calendarRoutes from "./routes/calendar.js";
 import quoteRoutes from "./routes/quote.js";
+import reviewsRoutes from "./routes/reviews.js";
 
 const app = express();
 
@@ -28,12 +29,14 @@ app.get("/healthz", (req, res) => {
     process.env.GOOGLE_PRIVATE_KEY
   );
   const smtpOk = Boolean(process.env.SMTP_USER && process.env.SMTP_PASS);
+  const placesOk = Boolean(process.env.GOOGLE_PLACES_API_KEY);
 
   res.json({
     status: "ok",
     services: {
       calendar: calendarOk ? "ok" : "missing-secrets",
       smtp: smtpOk ? "ok" : "missing-secrets",
+      places: placesOk ? "ok" : "missing-secrets",
     },
     config: {
       // Permet de vérifier d'un coup d'œil où partent les notifications + RDV
@@ -92,6 +95,7 @@ app.get("/api/test-email", async (req, res) => {
 
 app.use("/api", calendarRoutes);
 app.use("/api", quoteRoutes);
+app.use("/api", reviewsRoutes);
 
 // Error handler global (filet de sécurité)
 app.use((err, req, res, next) => {
