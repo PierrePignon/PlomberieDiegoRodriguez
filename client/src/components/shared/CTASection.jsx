@@ -12,7 +12,7 @@ export default function CTASection({
   subtitle = "Devis gratuit sous 24h — Intervention rapide — Artisan certifié",
 }) {
   return (
-    <section className="relative bg-abyss py-20 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-abyss via-slate-900 to-abyss py-20 overflow-hidden">
       {/* Halo doré discret en arrière-plan pour la chaleur */}
       <div className="absolute inset-0 bg-gradient-to-br from-kinetic/5 via-transparent to-kinetic/5 pointer-events-none" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-kinetic/10 blur-3xl rounded-full pointer-events-none" />
