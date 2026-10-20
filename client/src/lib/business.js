@@ -179,15 +179,61 @@
     { id: "chauffe-eau", title: "Chauffe-eau & production d'eau chaude", emoji: "🔥", short: "Réparation, remplacement et installation de chauffe-eau.", desc: "Plus d'eau chaude ? Chauffe-eau qui fuit ? Nous intervenons sur tous types de chauffe-eau : électrique, thermodynamique, chauffe-eau solaire. Diagnostic rapide, remplacement ou réparation selon l'état de votre appareil.", features: ["Diagnostic chauffe-eau électrique et gaz", "Remplacement groupe de sécurité", "Installation chauffe-eau thermodynamique", "Conseil et devis comparatif", "Mise en service et contrôle"] },
     { id: "carrelage", title: "Carrelage & faïence", emoji: "🏗️", short: "Pose, rénovation et réfection carrelage sol et mur.", desc: "En complément de la plomberie, Diego Rodriguez est spécialisé dans la pose et rénovation de carrelage. Sol, mur, faïence de salle de bain, terrasse : un travail soigné, des joints parfaits, des finitions professionnelles.", features: ["Pose carrelage sol et mur", "Faïence salle de bain", "Dépose ancien carrelage", "Imperméabilisation bac douche", "Joints époxy haute résistance"] },
   ],
+  // Pool d'avis sélectionnés pour leur valeur SEO (mentions de ville, service, détails).
+  // Trié du plus récent au plus ancien. Chaque entrée : {name, city, rating, text, date}.
+  // Ces avis sont AUSSI affichés sur /avis, et les 3 premiers sur la Home.
+  // Pour les 5 derniers avis LIVE depuis Google, voir /api/reviews côté backend.
+  // Les orthographes des auteurs ont été légèrement nettoyées (profesionalisme → professionnalisme).
   reviews: [
-    { name: "Marie-Hélène Raymond", city: "Port-de-Bouc", rating: 5, text: "Rénovation complète d'une salle de bain (faïences, carrelage, plomberie, peintures murs et plafond, pose des sanitaires / meubles / miroirs / branchements électriques / déplacement radiateur chauffage central par sèche-serviette). Travail impeccable, je recommande vivement !", date: "Mai 2025" },
-    { name: "Camille V.", city: "Port-de-Bouc", rating: 5, text: "Je vous recommande vivement Monsieur Rodriguez Diego, il est intervenu à notre domicile en urgence pour une énorme fuite d'eau suite à un tuyau enterré cassé. Grâce à son efficacité et à son sérieux nous avons pu être dépannés rapidement.", date: "Janvier 2026" },
-    { name: "Maxime Danet", city: "Port-de-Bouc", rating: 5, text: "Plombier très compétent, réactif et à l'écoute, avec d'excellents conseils. Il est intervenu rapidement, le travail est propre et soigné, et toutes ses explications étaient claires du début à la fin. Son sérieux et sa gentillesse font la différence.", date: "Décembre 2025" },
-    { name: "Mehdi Brini", city: "Port-de-Bouc", rating: 5, text: "Intervention rapide et travail soigné. Le plombier a été ponctuel et très professionnel. Le problème a été réglé efficacement et le chantier laissé propre après son passage.", date: "Janvier 2026" },
-    { name: "Vincent Peronne", city: "Port-de-Bouc", rating: 5, text: "Je vous recommande à 100% ce plombier qui a été réactif, présent sur place 1 heure après mon appel. Il a pris le temps de chercher la cause, consciencieux, professionnel, sympathique. Je ferai appel à lui sans hésiter.", date: "Février 2026" },
-    { name: "A A", city: "Port-de-Bouc", rating: 5, text: "Merci à monsieur Rodriguez, il a été très disponible, à l'écoute, et bon professionnel.", date: "Mars 2026" },
-    { name: "Gaet Gaet", city: "Port-de-Bouc", rating: 5, text: "Mr Rodriguez est très professionnel, efficace et réactif. Il a réparé définitivement et très rapidement une fuite au niveau de l'évacuation de l'évier. Je recommande.", date: "Janvier 2026" },
+    // === Octobre 2026 (très récent) ===
+    { name: "QRCODE", city: "Port-de-Bouc", rating: 5, text: "Très satisfait ! Plombier sérieux, professionnel et réactif. Travail soigné, efficace et de qualité. Personne sympathique, à l'écoute et de bon conseil. Je recommande sans hésitation pour son professionnalisme et son sérieux. Vous pouvez lui faire confiance les yeux fermés !", date: "Octobre 2026" },
+    // === Septembre 2026 ===
+    { name: "Jaky Armitano", city: "Port-de-Bouc", rating: 5, text: "Très satisfait de l'intervention, Diego est au top, disponible, réactif et très professionnel. Je recommande grandement 👍", date: "Septembre 2026" },
+    { name: "Jérémie Malle", city: "Port-de-Bouc", rating: 5, text: "Excellent service 🙏 Des toilettes et une chasse d'eau au top. Travail soigné et plombier à l'écoute.", date: "Septembre 2026" },
+    { name: "Thomas T.", city: "Port-de-Bouc", rating: 5, text: "Un plombier au top qui m'a réparé le siphon de la cuisine. Un professionnel hyper sympa, je recommande.", date: "Septembre 2026" },
+    { name: "Christopher Costanza", city: "Port-de-Bouc", rating: 5, text: "Intervention rapide et efficace. Très bon conseil donné. Je recommande !!", date: "Septembre 2026" },
+    // === Août 2026 ===
+    { name: "Guy Merindol", city: "Port-de-Bouc", rating: 5, text: "Sérieux et compétent, tous les ingrédients qui font toute la différence pour avoir un très bon plombier et aussi pour la climatisation chez soi. Bravo.", date: "Août 2026" },
+    // === Juillet 2026 ===
+    { name: "Karen Harmonie", city: "Port-de-Bouc", rating: 5, text: "Mr Rodriguez est venu pour faire le changement de mon WC situé dans ma salle de bains. Il s'est avéré que le WC qu'il allait acheter fuyait au moment des essais. Il a su gérer la situation de manière très professionnelle et trouver une solution rapidement.", date: "Juillet 2026" },
+    // === Juin 2026 ===
+    { name: "Ophelie Montaut", city: "Port-de-Bouc", rating: 5, text: "MERCI Diego ! Je recommande à 100 %. Très sérieux, ponctuel et surtout super efficace. Travail propre, explications claires et vraiment à l'écoute. On sent quelqu'un qui connaît son métier et qui prend le temps de bien faire les choses. Merci encore pour le travail réalisé, je referai appel sans hésitation.", date: "Juin 2026" },
+    // === Mai 2026 ===
+    { name: "Hugues Mosti", city: "Port-de-Bouc", rating: 5, text: "Je suis extrêmement satisfait du résultat et du sérieux de ce plombier. Si vous cherchez une intervention fiable et professionnelle, n'hésitez pas à faire appel à ses services. Merci pour ce travail remarquable !", date: "Mai 2026" },
+    { name: "Roxanne Vesin", city: "Port-de-Bouc", rating: 5, text: "Artisan très réactif et professionnel, il est venu dans la journée suite à ma sollicitation pour vérifier les tuyauteries suite à une suspicion de fuite. C'est un contact sûr à avoir pour vos travaux de plomberie.", date: "Mai 2026" },
+    { name: "Chris H.", city: "Port-de-Bouc", rating: 5, text: "Artisan à l'écoute des besoins de ses clients, travail méticuleux et rapide, je recommande à 100/100 !", date: "Mai 2026" },
+    // === Avril 2026 ===
+    { name: "Simin Fernandez", city: "Port-de-Bouc", rating: 5, text: "Intervention rapide et professionnelle pour mon pommeau de douche encastré. Travail propre, soigné et très efficace. Je recommande sans hésiter ! Très content du résultat et de son professionnalisme.", date: "Avril 2026" },
+    { name: "Pascal Désiré", city: "Port-de-Bouc", rating: 5, text: "Intervention au top ! 🔧 Je l'ai contacté pour une fuite sur un WC suspendu, et tout a été parfait : rapide, efficace et super pro. Le problème a été réglé sans complication.", date: "Avril 2026" },
+    // === Mars 2026 ===
+    { name: "Benjamin Contursi", city: "Port-de-Bouc", rating: 5, text: "Diego a assuré un suivi sérieux et constant de la rénovation de la plomberie de notre appartement. Il sait donner les bons conseils, travaille bien et respecte les échéances. Je recommande !", date: "Mars 2026" },
+    { name: "René Cadière", city: "Port-de-Bouc", rating: 5, text: "J'ai fait appel à Mr Diego Rodriguez pour un problème d'écoulement entre l'évier de la cuisine et mon réseau en vide sanitaire. Je suis très satisfait de son intervention. Sympathique, réactif, efficace et compétent. Je le recommande.", date: "Mars 2026" },
+    { name: "Clément Gomez", city: "Port-de-Bouc", rating: 5, text: "Intervention rapide sur une fuite de canalisation d'arrivée d'eau. Explications claires, travaux soignés. Merci pour votre intervention.", date: "Mars 2026" },
+    // === Février 2026 ===
+    { name: "Vincent Peronne", city: "Port-de-Bouc", rating: 5, text: "Je vous recommande à 100 % ce plombier qui a été réactif, présent sur place 1 heure après mon appel. Il a pris le temps de chercher la cause, consciencieux, professionnel, sympathique. Je ferai appel à lui sans hésiter.", date: "Février 2026" },
     { name: "Lisette Garcia", city: "Port-de-Bouc", rating: 5, text: "Un grand merci à ce jeune plombier, qui n'a pas hésité à venir en urgence après sa longue journée de travail pour déboucher les toilettes. Vraiment une personne dévouée, sympathique, avec un beau sourire. Je le conseille vivement.", date: "Février 2026" },
+    // === Janvier 2026 ===
+    { name: "Camille V.", city: "Port-de-Bouc", rating: 5, text: "Je vous recommande vivement Monsieur Rodriguez Diego, il est intervenu à notre domicile en urgence pour une énorme fuite d'eau suite à un tuyau enterré cassé. Grâce à son efficacité et à son sérieux nous avons pu être dépannés rapidement.", date: "Janvier 2026" },
+    { name: "Gaet Gaet", city: "Port-de-Bouc", rating: 5, text: "Mr Rodriguez est très professionnel, efficace et réactif. Il a réparé définitivement et très rapidement une fuite au niveau de l'évacuation de l'évier. Je recommande.", date: "Janvier 2026" },
+    { name: "Dominique Papini", city: "Port-de-Bouc", rating: 5, text: "Très satisfaite, beau carrelage de bonne qualité, plombier très à l'écoute, très bon travail et très sérieux.", date: "Janvier 2026" },
+    { name: "Adeline Fernandez", city: "Port-de-Bouc", rating: 5, text: "Je vous recommande Diego, un plombier à l'écoute et un travail parfait, vraiment soigneux. Je le rappellerai sans hésiter. Merci encore pour avoir réglé mon problème de fuite.", date: "Janvier 2026" },
+    // === Décembre 2025 ===
+    { name: "Erica Der Nazarian", city: "Port-de-Bouc", rating: 5, text: "Plombier déjà très agréable au 1er contact par téléphone, explique bien, gentiment, ensuite venu rapidement malgré la période des fêtes de fin d'année et a trouvé ma fuite sans perdre de temps. Personne très professionnelle, à recommander !", date: "Décembre 2025" },
+    { name: "Maxime Danet", city: "Port-de-Bouc", rating: 5, text: "Plombier très compétent, réactif et à l'écoute, avec d'excellents conseils. Il est intervenu rapidement, le travail est propre et soigné, et toutes ses explications étaient claires du début à la fin. Son sérieux et sa gentillesse font la différence.", date: "Décembre 2025" },
+    // === Novembre 2025 ===
+    { name: "Jean Pra", city: "Port-de-Bouc", rating: 5, text: "Intervenu à la suite d'une fuite d'eau, Monsieur Rodriguez s'est révélé être un plombier ponctuel et très efficace. Je le recommande sans réserve.", date: "Novembre 2025" },
+    // === Octobre 2025 ===
+    { name: "Brigitte Laversin", city: "Port-de-Bouc", rating: 5, text: "Très bon artisan. Sérieux, agréable et de bons conseils. Il a transformé une petite pièce en salle d'eau. Le tout réalisé rapidement et avec goût. Je le recommande.", date: "Octobre 2025" },
+    { name: "Marie-Hélène Raymond", city: "Port-de-Bouc", rating: 5, text: "Rénovation complète d'une salle de bain (faïences, carrelage, plomberie, peintures murs et plafond, pose des sanitaires / meubles / miroirs / branchements électriques / déplacement radiateur chauffage central par sèche-serviette). Travail impeccable, je recommande vivement !", date: "Octobre 2025" },
+    // === Juillet 2025 ===
+    { name: "Morgan A.", city: "Port-de-Bouc", rating: 5, text: "Plombier efficace et agréable. Mandaté pour une recherche de fuite, celle-ci a été trouvée ! Un succès !", date: "Juillet 2025" },
+    // === 2024 ===
+    { name: "Bernard N.", city: "Port-de-Bouc", rating: 5, text: "Nous avons fait appel à Mr Rodriguez pour la pose d'un WC suspendu avec un habillage carrelé, nous sommes très satisfaits de son travail, le rendu est impeccable !", date: "Janvier 2024" },
+    // === 2023 ===
+    { name: "Philippe Segura", city: "Port-de-Bouc", rating: 5, text: "Nous avons fait appel à M. Rodriguez pour la rénovation partielle d'une salle de bain d'un logement proposé à la location à Port-de-Bouc. Il s'agissait de supprimer une baignoire et de la remplacer par une douche avec receveur. Travail impeccable, nous le recommandons.", date: "Juillet 2023" },
+    { name: "Bruno Perrissin", city: "Port-de-Bouc", rating: 5, text: "Intervention efficace et rapide suite à une fuite importante sur l'arrivée d'eau dans le vide sanitaire. De plus, M. Rodriguez est ponctuel et sympathique. Je recommande.", date: "Octobre 2023" },
+    { name: "Corinne Audibert", city: "Port-de-Bouc", rating: 5, text: "Diego nous a refait à neuf une salle de bain vétuste et nous a en plus créé une autre salle de bain attenante à notre chambre, le tout avec goût et professionnalisme. Diego est une personne très agréable et avide d'apprendre ce qui rend les échanges constructifs. Je le recommande +++", date: "Janvier 2023" },
+    // === 2022 ===
     { name: "Hajar Kapoor", city: "Port-de-Bouc", rating: 5, text: "Il a réussi à transformer mon débarras en une magnifique salle de bain. Je suis très satisfaite de son travail fait avec beaucoup de sérieux, il est à l'écoute de ce qu'on lui dit. J'ai très apprécié son professionnalisme.", date: "Décembre 2022" },
   ],
   faq: [
