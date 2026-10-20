@@ -36,7 +36,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <img src={BUSINESS.logo} alt="Plomberie Rodriguez Diego" className="h-12 w-auto" />
+            <img src="/logo.png" alt="Plomberie Rodriguez Diego" className="h-12 w-auto" width="48" height="48" />
             <div className="hidden sm:block">
               <div className="text-white font-bold text-sm leading-none">Rodriguez Diego</div>
               <div className="text-kinetic text-xs font-medium mt-0.5 uppercase tracking-widest">Plomberie</div>

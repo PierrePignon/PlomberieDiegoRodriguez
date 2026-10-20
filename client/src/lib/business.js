@@ -5,7 +5,10 @@
   phoneDisplay: "06 37 75 92 06",
   email: "diego.rodriguez131100@gmail.com",
   notifEmail: "diego.rodriguez131100@gmail.com",
-  logo: "https://media.base44.com/images/public/69d943d5cbef7978cbf110ac/e429aeb88_logo.png",
+  logo: "/logo.png",
+  // Note Google — à mettre à jour au fur et à mesure que de nouveaux avis arrivent
+  rating: 4.9,
+  reviewCount: 75,
   address: "3 Sq. Guy de Maupassant",
   city: "Port-de-Bouc",
   zip: "13110",

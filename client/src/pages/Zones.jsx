@@ -33,26 +33,17 @@ export default function Zones() {
               <div className="space-y-4">
                 {primary.map((z) => (
                   <div key={z.name} className="bg-white rounded-xl border border-slate-100 p-5 hover:border-kinetic hover:shadow-md transition-all">
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 bg-kinetic/10 rounded-lg flex items-center justify-center shrink-0">
-                          <MapPin className="w-4 h-4 text-kinetic" />
-                        </div>
-                        <div>
-                          <div className="font-bold text-abyss">{z.name}</div>
-                          <div className="flex items-center gap-1.5 mt-0.5">
-                            <Clock className="w-3.5 h-3.5 text-green-500" />
-                            <span className="text-xs text-green-600 font-medium">{z.delay}</span>
-                          </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 bg-kinetic/10 rounded-lg flex items-center justify-center shrink-0">
+                        <MapPin className="w-4 h-4 text-kinetic" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="font-bold text-abyss">{z.name}</div>
+                        <div className="flex items-center gap-1.5 mt-0.5">
+                          <Clock className="w-3.5 h-3.5 text-green-500" />
+                          <span className="text-xs text-green-600 font-medium">{z.delay}</span>
                         </div>
                       </div>
-                      <a
-                        href={`tel:${BUSINESS.phone}`}
-                        className="bg-kinetic text-white text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-orange-700 transition-colors whitespace-nowrap flex items-center gap-1"
-                      >
-                        <Phone className="w-3 h-3" />
-                        Appeler
-                      </a>
                     </div>
                     <p className="mt-3 text-sm text-slate-500 leading-relaxed">{z.desc}</p>
                     {z.hasPage && (

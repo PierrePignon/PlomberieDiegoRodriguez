@@ -117,7 +117,7 @@ export default function ServicesShowcase() {
             <Link
               key={service.id}
               to={`/services#${service.id}`}
-              className="snap-start shrink-0 w-[82vw] sm:w-[55vw] md:w-[42%] lg:w-[31%] xl:w-[26%] aspect-[3/4] relative overflow-hidden rounded-2xl group cursor-pointer transition-all duration-500 hover:shadow-2xl"
+              className="snap-start shrink-0 w-[68vw] sm:w-[42vw] md:w-[32%] lg:w-[24%] xl:w-[22%] aspect-[4/5] relative overflow-hidden rounded-2xl group cursor-pointer transition-all duration-500 hover:shadow-2xl"
             >
               {/* Image de fond avec fallback automatique élégant si URL casse */}
               <ImageWithFallback

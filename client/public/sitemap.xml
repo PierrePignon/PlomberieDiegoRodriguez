@@ -1,113 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- Pages principales -->
   <url>
     <loc>https://plomberie-diego-rodriguez.fr/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://plomberie-diego-rodriguez.fr/services</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://plomberie-diego-rodriguez.fr/zones</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-  </url>
-
-  <!-- Pages villes (SEO local) -->
-  <url>
-    <loc>https://plomberie-diego-rodriguez.fr/plombier-martigues</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://plomberie-diego-rodriguez.fr/plombier-fos-sur-mer</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://plomberie-diego-rodriguez.fr/plombier-istres</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://plomberie-diego-rodriguez.fr/plombier-saint-mitre-les-remparts</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://plomberie-diego-rodriguez.fr/plombier-sausset-les-pins</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://plomberie-diego-rodriguez.fr/plombier-carry-le-rouet</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://plomberie-diego-rodriguez.fr/realisations</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://plomberie-diego-rodriguez.fr/avis</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://plomberie-diego-rodriguez.fr/contact</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://plomberie-diego-rodriguez.fr/rendez-vous</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.9</priority>
   </url>
 
+  <!-- Pages villes (SEO local) -->
+  <url>
+    <loc>https://plomberie-diego-rodriguez.fr/plombier-martigues</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://plomberie-diego-rodriguez.fr/plombier-fos-sur-mer</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://plomberie-diego-rodriguez.fr/plombier-istres</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://plomberie-diego-rodriguez.fr/plombier-saint-mitre-les-remparts</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://plomberie-diego-rodriguez.fr/plombier-sausset-les-pins</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://plomberie-diego-rodriguez.fr/plombier-carry-le-rouet</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Pages services dédiées -->
+  <url>
+    <loc>https://plomberie-diego-rodriguez.fr/debouchage</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://plomberie-diego-rodriguez.fr/recherche-de-fuite</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://plomberie-diego-rodriguez.fr/chauffe-eau</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Pages légales -->
   <url>
     <loc>https://plomberie-diego-rodriguez.fr/mentions-legales</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
     <loc>https://plomberie-diego-rodriguez.fr/confidentialite</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
-  <url><loc>https://plomberie-diego-rodriguez.fr/debouchage</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://plomberie-diego-rodriguez.fr/recherche-de-fuite</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://plomberie-diego-rodriguez.fr/chauffe-eau</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>

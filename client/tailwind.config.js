@@ -9,7 +9,11 @@ module.exports = {
   		},
   		colors: {
   			abyss: '#0A0A0A',
-  			kinetic: '#C9A84C',
+  			// Accent principal : doré-ambre profond. Reste cohérent avec le logo doré de Diego
+  			// mais tient mieux sur grande surface que le jaune-moutarde #C9A84C (trop criard sur CTA).
+  			// Autres candidats si on veut changer : '#D4AF37' (or classique), '#A16207' (amber-700 Tailwind),
+  			// '#B45309' (amber-700 vif), '#8B6914' (bronze), '#EA580C' (orange chaleureux).
+  			kinetic: '#B45309',
   			gold: '#C9A84C',
   			mist: '#F8FAFC',
   			steel: '#94A3B8',

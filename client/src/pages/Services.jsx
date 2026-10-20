@@ -51,12 +51,12 @@ export default function Services() {
                       </li>
                     ))}
                   </ul>
-                  <div className="flex gap-3">
-                    <a href={`tel:${BUSINESS.phone}`} className="flex items-center gap-2 bg-kinetic text-white px-5 py-2.5 rounded-lg font-bold hover:bg-orange-700 transition-colors text-sm">
+                  <div className="flex flex-wrap gap-3">
+                    <a href={`tel:${BUSINESS.phone}`} className="flex items-center gap-2 bg-kinetic text-white px-5 py-2.5 rounded-lg font-bold hover:bg-orange-700 transition-colors text-sm whitespace-nowrap">
                       <Phone className="w-4 h-4" />{BUSINESS.phoneDisplay}
                     </a>
-                    <Link to="/contact" className="flex items-center gap-2 bg-abyss text-white px-5 py-2.5 rounded-lg font-bold hover:bg-slate-800 transition-colors text-sm">
-                      Devis <ChevronRight className="w-4 h-4" />
+                    <Link to="/contact" className="flex items-center gap-2 bg-abyss text-white px-5 py-2.5 rounded-lg font-bold hover:bg-slate-800 transition-colors text-sm whitespace-nowrap">
+                      Devis gratuit <ChevronRight className="w-4 h-4" />
                     </Link>
                   </div>
                 </div>
