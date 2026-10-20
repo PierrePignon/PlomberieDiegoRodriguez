@@ -54,13 +54,19 @@ export default function Avis() {
     reviewCount: BUSINESS.reviewCount,
   });
 
-  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
-  const totalPool = BUSINESS.reviews.length;
-  const visibleReviews = BUSINESS.reviews.slice(0, visibleCount);
-  const hasMore = visibleCount < totalPool;
-
   // Affichées en LIVE en haut (depuis Google API, max 5)
   const liveReviews = (live.reviews || []).slice(0, 5);
+
+  // Normalise un nom pour dédoublonner (minuscules, sans accents, sans espaces en double)
+  const normalize = (s) => (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/\s+/g, " ").trim();
+  const liveAuthorKeys = new Set(liveReviews.map((r) => normalize(r.author)));
+
+  // Dédoublonne le pool manuel : masque les avis déjà présents dans la section LIVE
+  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
+  const dedupedPool = BUSINESS.reviews.filter((r) => !liveAuthorKeys.has(normalize(r.name)));
+  const totalPool = dedupedPool.length;
+  const visibleReviews = dedupedPool.slice(0, visibleCount);
+  const hasMore = visibleCount < totalPool;
 
   return (
     <>

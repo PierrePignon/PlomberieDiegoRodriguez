@@ -13,7 +13,7 @@ module.exports = {
   			// mais tient mieux sur grande surface que le jaune-moutarde #C9A84C (trop criard sur CTA).
   			// Autres candidats si on veut changer : '#D4AF37' (or classique), '#A16207' (amber-700 Tailwind),
   			// '#B45309' (amber-700 vif), '#8B6914' (bronze), '#EA580C' (orange chaleureux).
-  			kinetic: '#F59E0B',
+  			kinetic: '#D4AF37',
   			gold: '#C9A84C',
   			mist: '#F8FAFC',
   			steel: '#94A3B8',

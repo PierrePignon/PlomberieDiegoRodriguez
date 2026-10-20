@@ -6,9 +6,10 @@
   email: "diego.rodriguez131100@gmail.com",
   notifEmail: "diego.rodriguez131100@gmail.com",
   logo: "/logo.png",
-  // Note Google — à mettre à jour au fur et à mesure que de nouveaux avis arrivent
+  // Note Google — valeurs de fallback uniquement (si le backend /api/reviews ne répond pas).
+  // En production, le hook useGoogleReviews les écrase par les vraies valeurs live de Google.
   rating: 4.9,
-  reviewCount: 75,
+  reviewCount: 72,
   address: "3 Sq. Guy de Maupassant",
   city: "Port-de-Bouc",
   zip: "13110",
