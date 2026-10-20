@@ -335,20 +335,9 @@ export default function Contact() {
                       </div>
                     </div>
                   </a>
-                  <a
-                    href={`mailto:${BUSINESS.email}`}
-                    className="flex items-center gap-4 group p-3 rounded-xl hover:bg-slate-50 transition-colors"
-                  >
-                    <div className="w-10 h-10 bg-abyss rounded-lg flex items-center justify-center shrink-0">
-                      <Mail className="w-5 h-5 text-white" />
-                    </div>
-                    <div className="min-w-0">
-                      <div className="text-xs text-slate-400 mb-0.5">Email</div>
-                      <div className="font-bold text-abyss group-hover:text-kinetic transition-colors text-sm truncate">
-                        {BUSINESS.email}
-                      </div>
-                    </div>
-                  </a>
+                  {/* L'email de Diego est volontairement NON affiché publiquement :
+                      on redirige tout contact écrit vers le formulaire (plus pro, meilleure qualification,
+                      photos jointes possibles). Diego garde son email pour le CRM/schema.org uniquement. */}
                   <div className="flex items-center gap-4 p-3">
                     <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center shrink-0">
                       <MapPin className="w-5 h-5 text-abyss" />

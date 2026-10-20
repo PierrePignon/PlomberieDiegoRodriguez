@@ -1,5 +1,5 @@
 ﻿import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, Clock, ExternalLink } from "lucide-react";
+import { Phone, MessageSquare, MapPin, Clock, ExternalLink } from "lucide-react";
 import { BUSINESS } from "../../lib/business";
 
 export default function Footer() {
@@ -13,7 +13,7 @@ export default function Footer() {
             {/* Brand */}
             <div className="lg:col-span-1">
               <div className="flex items-center gap-3 mb-5">
-                <img src={BUSINESS.logo} alt="Plomberie Rodriguez Diego" className="h-14 w-auto" />
+                <img src="/logo.png" alt="Plomberie Rodriguez Diego" className="h-14 w-auto" width="56" height="56" />
               </div>
               <p className="text-sm text-slate-400 leading-relaxed mb-5">
                 Artisan plombier à Port-de-Bouc depuis plusieurs années. Plomberie, rénovation salle de bain, carrelage. Devis gratuit.
@@ -33,15 +33,15 @@ export default function Footer() {
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone className="w-4 h-4 text-kinetic shrink-0" />
-                  <a href={`tel:${BUSINESS.phone}`} className="hover:text-white transition-colors font-medium">
+                  <a href={`tel:${BUSINESS.phone}`} className="hover:text-white transition-colors font-medium whitespace-nowrap">
                     {BUSINESS.phoneDisplay}
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Mail className="w-4 h-4 text-kinetic shrink-0" />
-                  <a href={`mailto:${BUSINESS.email}`} className="hover:text-white transition-colors">
-                    {BUSINESS.email}
-                  </a>
+                  <MessageSquare className="w-4 h-4 text-kinetic shrink-0" />
+                  <Link to="/contact" className="hover:text-white transition-colors font-medium">
+                    Nous écrire
+                  </Link>
                 </div>
                 <div className="flex items-start gap-3">
                   <Clock className="w-4 h-4 text-kinetic mt-0.5 shrink-0" />
