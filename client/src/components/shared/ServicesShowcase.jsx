@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { BUSINESS } from "../../lib/business";
+import { serviceUrl } from "../../lib/utils";
 import ImageWithFallback, { FALLBACK_ICONS } from "./ImageWithFallback";
 
 /**
@@ -116,7 +117,7 @@ export default function ServicesShowcase() {
           return (
             <Link
               key={service.id}
-              to={`/services#${service.id}`}
+              to={serviceUrl(service.id)}
               className="snap-start shrink-0 w-[68vw] sm:w-[42vw] md:w-[32%] lg:w-[24%] xl:w-[22%] aspect-[4/5] relative overflow-hidden rounded-2xl group cursor-pointer transition-all duration-500 hover:shadow-2xl"
             >
               {/* Image de fond avec fallback automatique élégant si URL casse */}

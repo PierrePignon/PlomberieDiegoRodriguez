@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
-import { Phone, MapPin, Clock, CheckCircle, ChevronRight, Home, ChevronsRight, Star, Wrench, Shield, HelpCircle } from "lucide-react";
+import { Phone, MapPin, Clock, CheckCircle, ChevronRight, Home, ChevronsRight, Star, Wrench, Shield, HelpCircle, Image as ImageIcon } from "lucide-react";
 import { BUSINESS } from "../lib/business";
+import { serviceUrl } from "../lib/utils";
 import CTASection from "../components/shared/CTASection";
 import usePageMeta from "../components/seo/usePageMeta";
 
@@ -262,12 +263,12 @@ export default function PlombierVille({ slug: propSlug }) {
               {services.map((s) => (
                 <Link
                   key={s.id}
-                  to="/services"
+                  to={serviceUrl(s.id)}
                   className="bg-white rounded-xl p-6 border border-slate-100 hover:border-kinetic hover:shadow-lg transition-all group"
                 >
                   <div className="text-3xl mb-3">{s.emoji}</div>
                   <h3 className="font-bold text-abyss mb-2 group-hover:text-kinetic transition-colors">
-                    {s.title}
+                    {s.title} à {ville.name}
                   </h3>
                   <p className="text-sm text-slate-500 leading-relaxed">{s.short}</p>
                   <div className="mt-4 text-kinetic text-xs font-bold flex items-center gap-1">
@@ -308,6 +309,64 @@ export default function PlombierVille({ slug: propSlug }) {
               {ville.faq.map((item) => (
                 <FAQItem key={item.q} q={item.q} a={item.a} />
               ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* RÉALISATIONS RÉCENTES — maillage interne vers /realisations + /services */}
+      {BUSINESS.realizations && BUSINESS.realizations.length > 0 && (
+        <section className="py-16 bg-mist border-t border-slate-100">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <div className="text-kinetic font-bold text-sm uppercase tracking-widest mb-3 flex items-center justify-center gap-2">
+                <ImageIcon className="w-4 h-4" />
+                Chantiers récents
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-black text-abyss mb-3">
+                Quelques réalisations près de {ville.name}
+              </h2>
+              <p className="text-slate-500 text-sm">
+                Un aperçu des interventions réalisées dans le secteur de Port-de-Bouc et des communes voisines.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {BUSINESS.realizations
+                .filter((r) => r.imageAfter || r.image)
+                .slice(0, 3)
+                .map((r) => {
+                  const cover = r.imageAfter || r.image;
+                  return (
+                    <Link
+                      key={r.title}
+                      to={`/realisations#${(r.title || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "")}`}
+                      className="bg-white rounded-xl overflow-hidden border border-slate-100 hover:shadow-lg hover:border-kinetic transition-all group block"
+                    >
+                      <div className="aspect-video overflow-hidden bg-slate-100">
+                        <img
+                          src={cover}
+                          alt={r.title}
+                          loading="lazy"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                      <div className="p-4">
+                        <div className="text-xs text-slate-400 mb-1">{r.type} · {r.city}</div>
+                        <h3 className="font-bold text-abyss text-sm leading-tight group-hover:text-kinetic transition-colors">
+                          {r.title}
+                        </h3>
+                      </div>
+                    </Link>
+                  );
+                })}
+            </div>
+            <div className="text-center mt-8">
+              <Link
+                to="/realisations"
+                className="inline-flex items-center gap-2 text-abyss hover:text-kinetic font-bold text-sm"
+              >
+                Voir toutes nos réalisations <ChevronRight className="w-4 h-4" />
+              </Link>
             </div>
           </div>
         </section>

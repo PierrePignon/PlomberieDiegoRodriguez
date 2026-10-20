@@ -96,8 +96,8 @@ export default function Avis() {
       <section className="py-20 bg-mist">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          {/* Section Avis LIVE Google (max 5, bordure kinetic) */}
-          {liveReviews.length > 0 && (
+          {/* Section Avis LIVE Google (max 5, bordure kinetic) + skeleton loader pendant fetch */}
+          {(live.loading || liveReviews.length > 0) && (
             <div className="mb-16">
               <div className="flex items-center gap-3 mb-6">
                 <Zap className="w-5 h-5 text-kinetic" />
@@ -106,9 +106,30 @@ export default function Avis() {
                 <span className="text-xs text-slate-400 font-medium">Live Google</span>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {liveReviews.map((r, i) => (
-                  <ReviewCard key={`live-${i}`} r={r} isLive />
-                ))}
+                {live.loading
+                  ? [0, 1, 2].map((i) => (
+                      <div key={`sk-${i}`} className="bg-white rounded-2xl border border-kinetic/20 p-6 animate-pulse">
+                        <div className="h-5 w-24 bg-kinetic/10 rounded mb-4" />
+                        <div className="flex gap-0.5 mb-4">
+                          {[0, 1, 2, 3, 4].map((j) => (
+                            <div key={j} className="w-4 h-4 bg-amber-100 rounded-sm" />
+                          ))}
+                        </div>
+                        <div className="space-y-2 mb-5">
+                          <div className="h-3 bg-slate-100 rounded w-full" />
+                          <div className="h-3 bg-slate-100 rounded w-full" />
+                          <div className="h-3 bg-slate-100 rounded w-4/5" />
+                        </div>
+                        <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                          <div className="space-y-1.5">
+                            <div className="h-3.5 bg-slate-200 rounded w-28" />
+                            <div className="h-2.5 bg-slate-100 rounded w-20" />
+                          </div>
+                          <div className="h-6 w-16 bg-kinetic/10 rounded" />
+                        </div>
+                      </div>
+                    ))
+                  : liveReviews.map((r, i) => <ReviewCard key={`live-${i}`} r={r} isLive />)}
               </div>
             </div>
           )}

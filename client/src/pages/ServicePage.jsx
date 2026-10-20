@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
-import { Phone, CheckCircle, ChevronRight, Home, ChevronsRight, Star, Shield, Clock, HelpCircle, Wrench } from "lucide-react";
+import { Phone, CheckCircle, ChevronRight, Home, ChevronsRight, Star, Shield, Clock, HelpCircle, Wrench, Image as ImageIcon } from "lucide-react";
 import { BUSINESS } from "../lib/business";
+import { slug, serviceFromRealisationType } from "../lib/utils";
 import CTASection from "../components/shared/CTASection";
 import usePageMeta from "../components/seo/usePageMeta";
 
@@ -146,6 +147,18 @@ export default function ServicePage({ slug: propSlug }) {
   const others = SERVICE_PAGES.filter((s) => s.slug !== svc.slug);
   const villes = BUSINESS.zones.filter((z) => z.hasPage).slice(0, 6);
 
+  // Réalisations liées à ce service (matching sur le type)
+  const relatedRealisations = (BUSINESS.realizations || [])
+    .filter((r) => {
+      const guessed = serviceFromRealisationType(r.type);
+      // Match "fuite" avec svc.slug "recherche-de-fuite" (ou debouchage/chauffe-eau direct)
+      if (svc.slug === "recherche-de-fuite" && guessed === "fuite") return true;
+      if (svc.slug === "debouchage" && guessed === "debouchage") return true;
+      if (svc.slug === "chauffe-eau" && guessed === "chauffe-eau") return true;
+      return false;
+    })
+    .slice(0, 3);
+
   return (
     <>
       {/* BREADCRUMB */}
@@ -238,6 +251,50 @@ export default function ServicePage({ slug: propSlug }) {
             </div>
             <div className="space-y-3">
               {svc.faq.map((item) => (<FAQItem key={item.q} q={item.q} a={item.a} />))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* RÉALISATIONS LIÉES AU SERVICE — maillage interne */}
+      {relatedRealisations.length > 0 && (
+        <section className="py-16 bg-mist border-t border-slate-100">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <div className="text-kinetic font-bold text-sm uppercase tracking-widest mb-3 flex items-center justify-center gap-2">
+                <ImageIcon className="w-4 h-4" />
+                Chantiers réalisés
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-black text-abyss mb-3">
+                Nos interventions récentes en {svc.name.toLowerCase()}
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {relatedRealisations.map((r) => {
+                const cover = r.imageAfter || r.image;
+                return (
+                  <Link
+                    key={r.title}
+                    to={`/realisations#${slug(r.title)}`}
+                    className="bg-white rounded-xl overflow-hidden border border-slate-100 hover:shadow-lg hover:border-kinetic transition-all group block"
+                  >
+                    <div className="aspect-video overflow-hidden bg-slate-100">
+                      {cover && (
+                        <img src={cover} alt={r.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      )}
+                    </div>
+                    <div className="p-4">
+                      <div className="text-xs text-slate-400 mb-1">{r.type} · {r.city}</div>
+                      <h3 className="font-bold text-abyss text-sm leading-tight group-hover:text-kinetic transition-colors">{r.title}</h3>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+            <div className="text-center mt-8">
+              <Link to="/realisations" className="inline-flex items-center gap-2 text-abyss hover:text-kinetic font-bold text-sm">
+                Voir toutes nos réalisations <ChevronRight className="w-4 h-4" />
+              </Link>
             </div>
           </div>
         </section>

@@ -1,6 +1,8 @@
-import { MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
+import { MapPin, ArrowRight } from "lucide-react";
 import useScrollReveal from "../../hooks/useScrollReveal";
-import { slug } from "../../lib/utils";
+import { slug, cityPageUrl, serviceFromRealisationType, serviceUrl } from "../../lib/utils";
+import { BUSINESS } from "../../lib/business";
 
 /**
  * Feed simple "D'autres chantiers récents".
@@ -81,9 +83,20 @@ function FeedCard({ item, delay }) {
         <h3 className="font-bold text-abyss mb-2 group-hover:text-kinetic transition-colors">
           {item.title}
         </h3>
-        <p className="text-sm text-slate-500 leading-relaxed line-clamp-2">
+        <p className="text-sm text-slate-500 leading-relaxed line-clamp-2 mb-3">
           {item.result || item.solution}
         </p>
+        {/* Maillage interne : vers la ville + le service correspondant */}
+        <div className="flex flex-wrap gap-2 pt-3 border-t border-slate-100">
+          {(() => {
+            const cityUrl = cityPageUrl(item.city, BUSINESS.zones);
+            const sId = serviceFromRealisationType(item.type);
+            const links = [];
+            if (cityUrl) links.push(<Link key="city" to={cityUrl} className="text-xs bg-slate-100 hover:bg-kinetic hover:text-white text-slate-600 px-2.5 py-1 rounded transition-colors">Plombier {item.city}</Link>);
+            if (sId) links.push(<Link key="svc" to={serviceUrl(sId)} className="text-xs bg-slate-100 hover:bg-kinetic hover:text-white text-slate-600 px-2.5 py-1 rounded transition-colors">{item.type}</Link>);
+            return links;
+          })()}
+        </div>
       </div>
     </div>
   );
