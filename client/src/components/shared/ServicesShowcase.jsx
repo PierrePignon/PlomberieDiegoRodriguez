@@ -20,8 +20,8 @@ const SERVICE_IMAGES = {
   depannage: "/images/realisations/service-depannage.png",
   // SDB moderne avec zellige bleu chevron et robinetterie dorée — haut de gamme
   renovation: "/images/realisations/sdb-moderne-chevron-bleu.png",
-  // Raccords laiton sur plan technique — plus esthétique que l'ancienne
-  sanitaire: "/images/realisations/service-sanitaire-laiton.png",
+  // SDB beige avec WC + plan vasque + douche — illustre bien "installation sanitaire"
+  sanitaire: "/images/realisations/sdb-chantier-apres.png",
   // Démontage anode magnésium entartrée — pro, technique, parle aux initiés
   entretien: "/images/realisations/service-entretien-anode.png",
   fuite: "/images/realisations/service-recherche-fuite.jpg",
@@ -112,10 +112,10 @@ export default function ServicesShowcase() {
         </div>
       </div>
 
-      {/* Carrousel horizontal */}
+      {/* Carrousel horizontal — cartes plus compactes et mieux centrées */}
       <div
         ref={containerRef}
-        className="services-scroll flex gap-4 sm:gap-5 overflow-x-auto snap-x snap-mandatory pl-4 sm:pl-6 lg:pl-8 pb-6"
+        className="services-scroll flex gap-3 sm:gap-4 overflow-x-auto snap-x snap-mandatory px-4 sm:px-6 lg:px-8 pb-6"
         style={{ WebkitOverflowScrolling: "touch", scrollPaddingLeft: "1rem" }}
       >
         {BUSINESS.services.map((service) => {
@@ -124,7 +124,7 @@ export default function ServicesShowcase() {
             <Link
               key={service.id}
               to={serviceUrl(service.id)}
-              className="snap-start shrink-0 w-[68vw] sm:w-[42vw] md:w-[32%] lg:w-[24%] xl:w-[22%] aspect-[4/5] relative overflow-hidden rounded-2xl group cursor-pointer transition-all duration-500 hover:shadow-2xl"
+              className="snap-start shrink-0 w-[58vw] sm:w-[36vw] md:w-[27%] lg:w-[20%] xl:w-[18%] aspect-square relative overflow-hidden rounded-xl group cursor-pointer transition-all duration-500 hover:shadow-2xl bg-slate-900"
             >
               {/* Image de fond avec fallback automatique élégant si URL casse */}
               <ImageWithFallback
@@ -135,32 +135,26 @@ export default function ServicesShowcase() {
                 gradient={(FALLBACK_ICONS[service.id] || {}).gradient || "from-slate-700 to-abyss"}
               />
 
-              {/* Overlay sombre élégant pour lisibilité */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/10 group-hover:from-black/95 group-hover:via-black/50 transition-all duration-500" />
+              {/* Overlay dégradé bas vers haut — moins intrusif */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent group-hover:from-black group-hover:via-black/60 transition-all duration-500" />
 
-              {/* Contenu */}
-              <div className="absolute inset-0 p-6 md:p-7 flex flex-col justify-end">
-                <div className="text-3xl mb-3 drop-shadow-lg">{service.emoji}</div>
-                <h3 className="text-white text-xl md:text-2xl font-black mb-2 leading-tight drop-shadow-lg">
+              {/* Contenu compact centré en bas */}
+              <div className="absolute inset-0 p-4 md:p-5 flex flex-col justify-end">
+                <div className="text-2xl mb-2 drop-shadow-lg">{service.emoji}</div>
+                <h3 className="text-white text-base md:text-lg font-black leading-tight drop-shadow-lg mb-1">
                   {service.title}
                 </h3>
-                <p className="text-white/85 text-sm leading-relaxed mb-4 line-clamp-3">
-                  {service.short}
-                </p>
-                <div className="inline-flex items-center gap-1.5 text-kinetic font-semibold text-sm group-hover:gap-3 transition-all duration-300">
+                <div className="inline-flex items-center gap-1 text-kinetic font-semibold text-xs opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all duration-300">
                   Découvrir
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-3 h-3" />
                 </div>
               </div>
 
               {/* Bordure subtile au hover */}
-              <div className="absolute inset-0 rounded-2xl ring-1 ring-white/0 group-hover:ring-white/20 transition-all duration-500 pointer-events-none" />
+              <div className="absolute inset-0 rounded-xl ring-1 ring-white/0 group-hover:ring-white/20 transition-all duration-500 pointer-events-none" />
             </Link>
           );
         })}
-
-        {/* Spacer en fin pour bien voir la dernière carte */}
-        <div className="shrink-0 w-4 sm:w-6 lg:w-8" aria-hidden="true" />
       </div>
 
       {/* Indicateur de scroll mobile */}
