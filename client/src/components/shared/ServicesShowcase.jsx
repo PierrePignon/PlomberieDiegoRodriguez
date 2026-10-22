@@ -20,8 +20,8 @@ const SERVICE_IMAGES = {
   depannage: "/images/realisations/service-depannage.png",
   // SDB moderne avec zellige bleu chevron et robinetterie dorée — haut de gamme
   renovation: "/images/realisations/sdb-moderne-chevron-bleu.png",
-  // SDB beige avec WC + plan vasque + douche — illustre bien "installation sanitaire"
-  sanitaire: "/images/realisations/sdb-chantier-apres.png",
+  // Clé à pipe + raccords laiton sur plan technique — propre et pro
+  sanitaire: "/images/realisations/service-sanitaire-laiton.png",
   // Démontage anode magnésium entartrée — pro, technique, parle aux initiés
   entretien: "/images/realisations/service-entretien-anode.png",
   fuite: "/images/realisations/service-recherche-fuite.jpg",
