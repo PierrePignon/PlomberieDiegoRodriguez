@@ -303,6 +303,24 @@
 // Galerie complémentaire — chantiers en photo unique (apparaissent dans le feed du bas)
 BUSINESS.realizations.push(
   {
+    title: "Salle de bain moderne — faïence zellige bleu et robinetterie dorée",
+    city: "Port-de-Bouc",
+    type: "Rénovation",
+    image: "/images/realisations/sdb-moderne-chevron-bleu.png",
+    problem: "Salle de bain à transformer en espace premium avec un parti pris déco fort",
+    solution: "Pose de zellige bleu marine en chevron sur le mur de douche/baignoire, robinetterie dorée brossée, miroir arrondi avec cadre or, meuble vasque bois clair, baignoire encastrée",
+    result: "Rendu haut de gamme type hôtel : contraste blanc/bleu profond mis en valeur par les touches or, lumière du mur zellige qui vibre",
+  },
+  {
+    title: "Salle de bain design — mur noir mat et bois naturel",
+    city: "Port-de-Bouc",
+    type: "Création",
+    image: "/images/realisations/sdb-design-noir-bois.png",
+    problem: "Pièce à aménager avec un parti pris minimaliste et chaleureux",
+    solution: "Carrelage noir mat grand format mur et sol, plan vasque bois massif, douche à l'italienne avec paroi verre, intégration végétale, miroir rond éclairage LED",
+    result: "Atmosphère cocon épurée, contraste noir/bois chaleureux, parfaite étanchéité",
+  },
+  {
     title: "Salle de bain design en blanc",
     city: "Port-de-Bouc",
     type: "Création",

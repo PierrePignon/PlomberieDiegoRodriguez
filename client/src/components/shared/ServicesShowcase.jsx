@@ -16,14 +16,20 @@ import ImageWithFallback, { FALLBACK_ICONS } from "./ImageWithFallback";
 // Si un chemin n'existe pas, ImageWithFallback affiche automatiquement
 // un gradient élégant + une icône métier en fallback.
 const SERVICE_IMAGES = {
-  depannage: "/images/realisations/service-depannage.jpg",
-  renovation: "/images/realisations/sdb-chantier-apres.png",
-  sanitaire: "/images/realisations/service-sanitaire.png",
-  entretien: "/images/realisations/service-entretien.jpg",
+  // Diego en vraie intervention — authentique, SEO ++, meilleur signal de confiance
+  depannage: "/images/realisations/service-depannage.png",
+  // SDB moderne avec zellige bleu chevron et robinetterie dorée — haut de gamme
+  renovation: "/images/realisations/sdb-moderne-chevron-bleu.png",
+  // Raccords laiton sur plan technique — plus esthétique que l'ancienne
+  sanitaire: "/images/realisations/service-sanitaire-laiton.png",
+  // Démontage anode magnésium entartrée — pro, technique, parle aux initiés
+  entretien: "/images/realisations/service-entretien-anode.png",
   fuite: "/images/realisations/service-recherche-fuite.jpg",
-  debouchage: "/images/realisations/service-debouchage.png",
+  // Démontage siphon évier — plus parlant qu'un évier avec plunger
+  debouchage: "/images/realisations/service-debouchage-siphon.png",
   "chauffe-eau": "/images/realisations/service-chauffe-eau.png",
-  carrelage: "/images/realisations/sdb-renovation-apres.png",
+  // SDB design noir + bois (vue plongeante) — élégant, met le carrelage en valeur
+  carrelage: "/images/realisations/sdb-design-noir-bois.png",
 };
 
 export default function ServicesShowcase() {
