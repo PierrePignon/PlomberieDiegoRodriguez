@@ -112,49 +112,58 @@ export default function ServicesShowcase() {
         </div>
       </div>
 
-      {/* Carrousel horizontal — cartes plus compactes et mieux centrées */}
-      <div
-        ref={containerRef}
-        className="services-scroll flex gap-3 sm:gap-4 overflow-x-auto snap-x snap-mandatory px-4 sm:px-6 lg:px-8 pb-6"
-        style={{ WebkitOverflowScrolling: "touch", scrollPaddingLeft: "1rem" }}
-      >
-        {BUSINESS.services.map((service) => {
-          const img = SERVICE_IMAGES[service.id];
-          return (
-            <Link
-              key={service.id}
-              to={serviceUrl(service.id)}
-              className="snap-start shrink-0 w-[58vw] sm:w-[36vw] md:w-[27%] lg:w-[20%] xl:w-[18%] aspect-square relative overflow-hidden rounded-xl group cursor-pointer transition-all duration-500 hover:shadow-2xl bg-slate-900"
-            >
-              {/* Image de fond avec fallback automatique élégant si URL casse */}
-              <ImageWithFallback
-                src={img}
-                alt={service.title}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                icon={(FALLBACK_ICONS[service.id] || {}).icon}
-                gradient={(FALLBACK_ICONS[service.id] || {}).gradient || "from-slate-700 to-abyss"}
-              />
+      {/* Wrapper centré avec padding équilibré pour éviter le "pousser à gauche" sur desktop */}
+      <div className="max-w-7xl mx-auto">
+        {/* Carrousel horizontal — snap tactile, cartes format portrait équilibré */}
+        <div
+          ref={containerRef}
+          className="services-scroll flex gap-4 sm:gap-5 overflow-x-auto snap-x snap-mandatory px-4 sm:px-6 lg:px-8 pb-6"
+          style={{ WebkitOverflowScrolling: "touch", scrollPaddingLeft: "1rem" }}
+        >
+          {BUSINESS.services.map((service) => {
+            const img = SERVICE_IMAGES[service.id];
+            return (
+              <Link
+                key={service.id}
+                to={serviceUrl(service.id)}
+                className="snap-start shrink-0 w-[72vw] sm:w-[45vw] md:w-[32%] lg:w-[23%] aspect-[4/5] relative overflow-hidden rounded-2xl group cursor-pointer transition-all duration-500 hover:shadow-2xl bg-slate-900"
+              >
+                {/* Image de fond avec fallback automatique élégant si URL casse */}
+                <ImageWithFallback
+                  src={img}
+                  alt={service.title}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                  icon={(FALLBACK_ICONS[service.id] || {}).icon}
+                  gradient={(FALLBACK_ICONS[service.id] || {}).gradient || "from-slate-700 to-abyss"}
+                />
 
-              {/* Overlay dégradé bas vers haut — moins intrusif */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent group-hover:from-black group-hover:via-black/60 transition-all duration-500" />
+                {/* Overlay dégradé */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/5 group-hover:from-black group-hover:via-black/65 transition-all duration-500" />
 
-              {/* Contenu compact centré en bas */}
-              <div className="absolute inset-0 p-4 md:p-5 flex flex-col justify-end">
-                <div className="text-2xl mb-2 drop-shadow-lg">{service.emoji}</div>
-                <h3 className="text-white text-base md:text-lg font-black leading-tight drop-shadow-lg mb-1">
-                  {service.title}
-                </h3>
-                <div className="inline-flex items-center gap-1 text-kinetic font-semibold text-xs opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all duration-300">
-                  Découvrir
-                  <ArrowRight className="w-3 h-3" />
+                {/* Contenu */}
+                <div className="absolute inset-0 p-5 md:p-6 flex flex-col justify-end">
+                  <div className="text-2xl md:text-3xl mb-2 drop-shadow-lg">{service.emoji}</div>
+                  <h3 className="text-white text-lg md:text-xl font-black mb-2 leading-tight drop-shadow-lg">
+                    {service.title}
+                  </h3>
+                  <p className="text-white/85 text-xs md:text-sm leading-relaxed mb-3 line-clamp-2">
+                    {service.short}
+                  </p>
+                  <div className="inline-flex items-center gap-1.5 text-kinetic font-semibold text-xs md:text-sm group-hover:gap-3 transition-all duration-300">
+                    Découvrir
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </div>
                 </div>
-              </div>
 
-              {/* Bordure subtile au hover */}
-              <div className="absolute inset-0 rounded-xl ring-1 ring-white/0 group-hover:ring-white/20 transition-all duration-500 pointer-events-none" />
-            </Link>
-          );
-        })}
+                {/* Bordure subtile au hover */}
+                <div className="absolute inset-0 rounded-2xl ring-1 ring-white/0 group-hover:ring-white/20 transition-all duration-500 pointer-events-none" />
+              </Link>
+            );
+          })}
+
+          {/* Spacer en fin pour padding droit équilibré */}
+          <div className="shrink-0 w-1 sm:w-2 lg:w-4" aria-hidden="true" />
+        </div>
       </div>
 
       {/* Indicateur de scroll mobile */}
