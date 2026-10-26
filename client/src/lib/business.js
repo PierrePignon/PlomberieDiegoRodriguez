@@ -303,6 +303,24 @@
 // Galerie complémentaire — chantiers en photo unique (apparaissent dans le feed du bas)
 BUSINESS.realizations.push(
   {
+    title: "Rénovation salle de bain — ambiance terracotta et miroir LED",
+    city: "Port-de-Bouc",
+    type: "Rénovation",
+    image: "/images/realisations/sdb-renovation-terracotta.jpg",
+    problem: "Salle de bain à moderniser avec un parti pris chaleureux et une ambiance accueillante",
+    solution: "Peinture terracotta sur l'ensemble des murs, pose d'un grand miroir rectangulaire éclairage LED intégré, double vasque céramique sur meuble bois massif, robinetterie dorée brossée, carrelage grand format gris anthracite au sol pour contraster",
+    result: "Pièce chaleureuse et moderne, le double vasque offre plus de confort au quotidien pour toute la famille",
+  },
+  {
+    title: "Installation sanitaire complète avec chauffe-eau Atlantic",
+    city: "Port-de-Bouc",
+    type: "Installation",
+    image: "/images/realisations/installation-sanitaire-atlantic.jpg",
+    problem: "Création d'une salle d'eau neuve avec installation complète : plomberie, raccordement eau chaude, sanitaires",
+    solution: "Pose chauffe-eau Atlantic, mise en place de la nourrice PER avec vannes thermostatiques, raccordement du plan vasque et du WC, carrelage grand format gris clair pour un rendu épuré",
+    result: "Installation technique propre et accessible pour l'entretien futur, salle d'eau fonctionnelle livrée clé en main",
+  },
+  {
     title: "Salle de bain moderne — faïence zellige bleu et robinetterie dorée",
     city: "Port-de-Bouc",
     type: "Rénovation",

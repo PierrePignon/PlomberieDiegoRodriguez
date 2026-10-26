@@ -18,10 +18,10 @@ import ImageWithFallback, { FALLBACK_ICONS } from "./ImageWithFallback";
 const SERVICE_IMAGES = {
   // Diego en vraie intervention — authentique, SEO ++, meilleur signal de confiance
   depannage: "/images/realisations/service-depannage.png",
-  // SDB moderne avec zellige bleu chevron et robinetterie dorée — haut de gamme
-  renovation: "/images/realisations/sdb-moderne-chevron-bleu.png",
-  // Clé à pipe + raccords laiton sur plan technique — propre et pro
-  sanitaire: "/images/realisations/service-sanitaire-laiton.png",
+  // SDB terracotta de Diego avec grand miroir LED + plan vasque bois + robinetterie dorée — vrai chantier
+  renovation: "/images/realisations/sdb-renovation-terracotta.jpg",
+  // Salle d'eau avec plan vasque + chauffe-eau Atlantic + nourrices PER — vraie installation sanitaire visible
+  sanitaire: "/images/realisations/installation-sanitaire-atlantic.jpg",
   // Démontage anode magnésium entartrée — pro, technique, parle aux initiés
   entretien: "/images/realisations/service-entretien-anode.png",
   fuite: "/images/realisations/service-recherche-fuite.jpg",
