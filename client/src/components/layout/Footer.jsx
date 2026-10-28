@@ -118,6 +118,7 @@ export default function Footer() {
           <div className="flex gap-4">
             <Link to="/mentions-legales" className="hover:text-slate-300 transition-colors">Mentions légales</Link>
             <Link to="/confidentialite" className="hover:text-slate-300 transition-colors">Confidentialité</Link>
+            <a href="https://lenseigneweb.fr" target="_blank" rel="noopener" className="hover:text-slate-300 transition-colors">Site réalisé par L'enseigne</a>
           </div>
         </div>
       </div>
