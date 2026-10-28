@@ -115,10 +115,18 @@ export default function Footer() {
       <div className="border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
           <span>© {year} {BUSINESS.name} — Tous droits réservés</span>
-          <div className="flex gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-4">
             <Link to="/mentions-legales" className="hover:text-slate-300 transition-colors">Mentions légales</Link>
             <Link to="/confidentialite" className="hover:text-slate-300 transition-colors">Confidentialité</Link>
-            <a href="https://lenseigneweb.fr" target="_blank" rel="noopener" className="hover:text-slate-300 transition-colors">Site réalisé par L'enseigne</a>
+            <a
+              href="https://lenseigneweb.fr"
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center gap-2 rounded-full border border-slate-700 px-3 py-1.5 text-slate-400 transition-colors hover:border-amber-300 hover:text-white"
+            >
+              <span className="h-[7px] w-[7px] rounded-full bg-[#FFB661] shadow-[0_0_8px_rgba(255,182,97,0.8)]" />
+              Site réalisé par <b className="font-semibold text-slate-200">L'enseigne</b>
+            </a>
           </div>
         </div>
       </div>
