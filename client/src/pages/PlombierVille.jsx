@@ -4,6 +4,7 @@ import { Phone, MapPin, Clock, CheckCircle, ChevronRight, Home, ChevronsRight, S
 import { BUSINESS } from "../lib/business";
 import { serviceUrl } from "../lib/utils";
 import CTASection from "../components/shared/CTASection";
+import ImageWithFallback from "../components/shared/ImageWithFallback";
 import usePageMeta from "../components/seo/usePageMeta";
 
 const SITE_URL = "https://plomberie-diego-rodriguez.fr";
@@ -343,10 +344,11 @@ export default function PlombierVille({ slug: propSlug }) {
                       className="bg-white rounded-xl overflow-hidden border border-slate-100 hover:shadow-lg hover:border-kinetic transition-all group block"
                     >
                       <div className="aspect-video overflow-hidden bg-slate-100">
-                        <img
+                        <ImageWithFallback
                           src={cover}
                           alt={r.title}
                           loading="lazy"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                       </div>

@@ -4,6 +4,7 @@ import { Phone, CheckCircle, ChevronRight, Home, ChevronsRight, Star, Shield, Cl
 import { BUSINESS } from "../lib/business";
 import { slug, serviceFromRealisationType } from "../lib/utils";
 import CTASection from "../components/shared/CTASection";
+import ImageWithFallback from "../components/shared/ImageWithFallback";
 import usePageMeta from "../components/seo/usePageMeta";
 
 const SITE_URL = "https://plomberie-diego-rodriguez.fr";
@@ -280,7 +281,13 @@ export default function ServicePage({ slug: propSlug }) {
                   >
                     <div className="aspect-video overflow-hidden bg-slate-100">
                       {cover && (
-                        <img src={cover} alt={r.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                        <ImageWithFallback
+                          src={cover}
+                          alt={r.title}
+                          loading="lazy"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
                       )}
                     </div>
                     <div className="p-4">

@@ -1,11 +1,75 @@
 # https://plomberie-diego-rodriguez.fr/
 # robots.txt — Plomberie Rodriguez Diego
+# Objectif : être trouvé partout — Google, Bing + crawlers IA (ChatGPT, Claude, Perplexity, Gemini)
 
+# ====== Règle par défaut : tout autorisé ======
 User-agent: *
 Allow: /
-
-# Bloque les chemins techniques inutiles (rien de critique pour ce site)
 Disallow: /api/
 
-# Sitemap
+# ====== Crawlers moteurs de recherche (explicites, bonne pratique SEO) ======
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# ====== Crawlers IA (visibilité dans ChatGPT, Claude, Perplexity, Gemini...) ======
+# Autoriser ces bots = être cité comme source dans les réponses IA (gros levier 2026)
+
+# OpenAI (ChatGPT, GPT search)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic (Claude)
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Google Gemini / AI Overviews
+User-agent: Google-Extended
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# Microsoft Copilot / Bing Chat
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+# ====== Sitemap ======
 Sitemap: https://plomberie-diego-rodriguez.fr/sitemap.xml

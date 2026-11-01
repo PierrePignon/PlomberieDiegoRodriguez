@@ -5,6 +5,7 @@ import { BUSINESS } from "../lib/business";
 import { slug } from "../lib/utils";
 import CTASection from "../components/shared/CTASection";
 import ServicesShowcase from "../components/shared/ServicesShowcase";
+import ImageWithFallback from "../components/shared/ImageWithFallback";
 
 function StarRating({ n = 5 }) {
   return (
@@ -256,11 +257,12 @@ export default function Home() {
                     className="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-xl transition-all block"
                   >
                     <div className="relative h-52 overflow-hidden">
-                      <img
+                      <ImageWithFallback
                         src={cover}
                         alt={r.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         loading="lazy"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute top-3 left-3 bg-abyss text-white text-xs font-bold px-2 py-1 rounded">{r.type}</div>
                       <div className="absolute top-3 right-3 bg-kinetic text-white text-xs font-bold px-2 py-1 rounded flex items-center gap-1">

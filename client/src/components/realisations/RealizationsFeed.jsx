@@ -3,6 +3,7 @@ import { MapPin, ArrowRight } from "lucide-react";
 import useScrollReveal from "../../hooks/useScrollReveal";
 import { slug, cityPageUrl, serviceFromRealisationType, serviceUrl } from "../../lib/utils";
 import { BUSINESS } from "../../lib/business";
+import ImageWithFallback from "../shared/ImageWithFallback";
 
 /**
  * Feed simple "D'autres chantiers récents".
@@ -62,10 +63,11 @@ function FeedCard({ item, delay }) {
     >
       <div className="relative h-56 overflow-hidden">
         {cover ? (
-          <img
+          <ImageWithFallback
             src={cover}
             alt={item.title}
             loading="lazy"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
           />
         ) : (
