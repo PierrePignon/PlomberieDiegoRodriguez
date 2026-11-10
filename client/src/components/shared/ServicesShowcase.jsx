@@ -137,16 +137,16 @@ export default function ServicesShowcase() {
                   gradient={(FALLBACK_ICONS[service.id] || {}).gradient || "from-slate-700 to-abyss"}
                 />
 
-                {/* Overlay dégradé */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/5 group-hover:from-black group-hover:via-black/65 transition-all duration-500" />
+                {/* Léger voile global pour contraste au hover */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-500" />
 
-                {/* Contenu */}
-                <div className="absolute inset-0 p-5 md:p-6 flex flex-col justify-end">
+                {/* Bandeau noir opaque en bas — style "bandeau Diego" */}
+                <div className="absolute bottom-0 left-0 right-0 bg-black/85 backdrop-blur-sm p-5 md:p-6">
                   <div className="text-2xl md:text-3xl mb-2 drop-shadow-lg">{service.emoji}</div>
-                  <h3 className="text-white text-lg md:text-xl font-black mb-2 leading-tight drop-shadow-lg">
+                  <h3 className="text-white text-lg md:text-xl font-black mb-2 leading-tight">
                     {service.title}
                   </h3>
-                  <p className="text-white/85 text-xs md:text-sm leading-relaxed mb-3 line-clamp-2">
+                  <p className="text-white/80 text-xs md:text-sm leading-relaxed mb-3 line-clamp-2">
                     {service.short}
                   </p>
                   <div className="inline-flex items-center gap-1.5 text-kinetic font-semibold text-xs md:text-sm group-hover:gap-3 transition-all duration-300">
